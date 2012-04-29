@@ -1,0 +1,44 @@
+#!/bin/sh
+
+bat(){
+  percent=$(acpi -b | cut -d ',' -f 2 | sed 's/\s//')
+  if [ -n "$(acpi -b | grep Discharging)" ]; then
+    echo "BAT $percent"
+  else
+    echo "AC"
+  fi
+}
+
+cpu(){
+  read cpu a b c previdle rest < /proc/stat
+  prevtotal=$((a+b+c+previdle))
+  sleep 0.5
+  read cpu a b c idle rest < /proc/stat
+  total=$((a+b+c+idle))
+  percent="$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))"
+  echo "CPU $percent%"
+}
+
+mem(){
+  used=$(free -m | awk '/^Mem/ {print $3}')
+  echo "MEM $used""MB"
+}
+
+net(){
+  ifc=$(ifconfig -s -a | grep RU)
+
+  echo -n "NET "
+  (echo $ifc | grep eth &>/dev/null) && echo -n "eth "
+  (echo $ifc | grep wlan &>/dev/null) && echo -n "wlan "
+  (echo $ifc | grep ppp &>/dev/null) && echo -n "ppp "
+}
+
+mailcount(){
+  echo "MAIL $(ls -1 ~/mail/INBOX/new | wc -l)"
+}
+
+while true; do
+  xsetroot -name "$(bat) · $(cpu) · $(mem) · $(net)· $(mailcount) · $(date +%H:%M:%S)"
+  sleep 1s
+done
+

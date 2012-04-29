@@ -1,0 +1,8 @@
+#!/bin/sh
+
+if [ -S /tmp/.X11-unix/X0 ]; then
+  chromium --memory-model=low --enable-seccomp-sandbox $@ &>/dev/null &
+else
+  w3m $@
+fi
+
