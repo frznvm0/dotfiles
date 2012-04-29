@@ -1,0 +1,21 @@
+[submodule "vim/bundle/coffee-script"]
+	path = vim/bundle/coffee-script
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/bundle/delimitmate"]
+	path = vim/bundle/delimitmate
+	url = git://github.com/Raimondi/delimitMate.git
+[submodule "vim/bundle/gnupg"]
+	path = vim/bundle/gnupg
+	url = git://gitorious.org/vim-gnupg/vim-gnupg.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/rails"]
+	path = vim/bundle/rails
+	url = git://github.com/tpope/vim-rails.git
+[submodule "vim/bundle/snipmate"]
+	path = vim/bundle/snipmate
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "vim/bundle/surround"]
+	path = vim/bundle/surround
+	url = git://github.com/tpope/vim-surround.git

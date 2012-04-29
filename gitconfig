@@ -1,0 +1,13 @@
+[core]
+	quotepath = false
+	editor = vim
+[alias]
+	co = checkout
+	st = status -sb
+	l = log --oneline --decorate
+	unstage = reset HEAD --
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = always

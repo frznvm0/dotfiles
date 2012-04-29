@@ -1,0 +1,7 @@
+alias _='sudo'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias l='ls --color=auto --group-directories-first -hlF'
+alias la='l -a'
+alias md='mkdir -p'
+alias temp='cd `mktemp -d`'
