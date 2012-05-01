@@ -1,6 +1,7 @@
-default: install
+.PHONY: install update remove
 
 install:
+	git submodule update --init
 	ln -s "${PWD}/vim" "${HOME}/.vim"
 	ln -s "${PWD}/zsh" "${HOME}/.zsh"
 	ln -s "${PWD}/gemrc" "${HOME}/.gemrc"
@@ -15,25 +16,29 @@ install:
 	ln -s "${PWD}/zshenv" "${HOME}/.zshenv"
 	ln -s "${PWD}/zshrc" "${HOME}/.zshrc"
 	mkdir -p "${HOME}/bin"
-	cp "${PWD}/bin/open" "${HOME}/bin"
-	cp "${PWD}/bin/wallpaper" "${HOME}/bin"
-	cp "${PWD}/bin/statusbar" "${HOME}/bin"
+	ln -s "${PWD}/bin/open" "${HOME}/bin"
+	ln -s "${PWD}/bin/wallpaper" "${HOME}/bin"
+	ln -s "${PWD}/bin/statusbar" "${HOME}/bin"
+
+update:
+	git pull
+	git submodule update
 
 remove:
 	rm -ri "${HOME}/.vim"
 	rm -ri "${HOME}/.zsh"
-	rm -ri "${HOME}/.gemrc"
-	rm -ri "${HOME}/.gitconfig"
-	rm -ri "${HOME}/.gvimrc"
-	rm -ri "${HOME}/.muttrc"
-	rm -ri "${HOME}/.pryrc"
-	rm -ri "${HOME}/.vimrc"
-	rm -ri "${HOME}/.xinitrc"
-	rm -ri "${HOME}/.Xresources"
-	rm -ri "${HOME}/.zprofile"
-	rm -ri "${HOME}/.zshenv"
-	rm -ri "${HOME}/.zshrc"
-	rm -ri "${HOME}/bin/open"
-	rm -ri "${HOME}/bin/wallpaper"
-	rm -ri "${HOME}/bin/statusbar"
+	rm -i "${HOME}/.gemrc"
+	rm -i "${HOME}/.gitconfig"
+	rm -i "${HOME}/.gvimrc"
+	rm -i "${HOME}/.muttrc"
+	rm -i "${HOME}/.pryrc"
+	rm -i "${HOME}/.vimrc"
+	rm -i "${HOME}/.xinitrc"
+	rm -i "${HOME}/.Xresources"
+	rm -i "${HOME}/.zprofile"
+	rm -i "${HOME}/.zshenv"
+	rm -i "${HOME}/.zshrc"
+	rm -i "${HOME}/bin/open"
+	rm -i "${HOME}/bin/wallpaper"
+	rm -i "${HOME}/bin/statusbar"
 
