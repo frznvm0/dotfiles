@@ -79,6 +79,10 @@ call pathogen#infect()
 " Color scheme
 colorscheme desert
 
+" Set snipmate tags
+let g:surround_45 = "<% \r %>"
+let g:surround_61 = "<%= \r %>"
+
 " Autocommands
 if has("autocmd")
 
