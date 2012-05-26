@@ -11,3 +11,5 @@ NODE_PATH='./node_modules:/usr/local/lib/node_modules:/usr/lib/node_modules'
 
 export PATH EDITOR VISUAL PAGER LC_CTYPE GREP_OPTIONS GREP_COLOR RUBYLIB NODE_PATH
 
+eval "$(rbenv init -)"
+
