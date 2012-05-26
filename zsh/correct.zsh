@@ -10,4 +10,6 @@ alias grep='nocorrect grep'
 alias pgrep='nocorrect pgrep'
 alias pkill='nocorrect pkill'
 alias killall='nocorrect killall'
+alias torify='nocorrect torify'
+alias type='nocorrect type'
 
