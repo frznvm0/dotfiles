@@ -25,3 +25,6 @@
 [submodule "vim/bundle/jade"]
 	path = vim/bundle/jade
 	url = git://github.com/digitaltoad/vim-jade.git
+[submodule "vim/bundle/solarized"]
+	path = vim/bundle/solarized
+	url = git://github.com/altercation/vim-colors-solarized.git

@@ -77,7 +77,12 @@ vnoremap <Tab> %
 call pathogen#infect()
 
 " Color scheme
-colorscheme desert
+if has('gui_running')
+  set background=light
+else
+  set background=dark
+endif
+colorscheme solarized
 
 " Set snipmate tags
 let g:surround_45 = "<% \r %>"
@@ -94,7 +99,7 @@ if has("autocmd")
       \   exe "normal! g`\"" |
       \ endif
 
-  au BufRead,BufNewFile {Gemfile,Rakefile,Guardfile,Procfile,config.ru} set ft=ruby
+  au BufRead,BufNewFile {Gemfile,Rakefile,Guardfile,config.ru} set ft=ruby
   au FileType make set noex st=8 sts=8 sw=8
   au FileType c set noex st=8 sts=8 sw=8
   au FileType python set st=4 sts=4 sw=4
