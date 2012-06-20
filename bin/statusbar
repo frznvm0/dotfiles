@@ -2,10 +2,18 @@
 
 bat(){
   percent=$(acpi -b | cut -d ',' -f 2 | sed 's/\s//')
+  icon="\uE03B"
   if [ -n "$(acpi -b | grep Discharging)" ]; then
-    echo "BAT $percent"
+    if [ ${percent%?} -le 25 ]; then
+      icon="\uE038"
+    elif [ ${percent%?} -le 50 ]; then
+      icon="\uE039"
+    elif [ ${percent%?} -le 75 ]; then
+      icon="\uE03A"
+    fi
+    echo -e "$icon $percent"
   else
-    echo "AC"
+    echo -e "\uE041"
   fi
 }
 
@@ -16,29 +24,35 @@ cpu(){
   read cpu a b c idle rest < /proc/stat
   total=$((a+b+c+idle))
   percent="$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))"
-  echo "CPU $percent%"
+  echo -e "\uE026 $percent%"
+}
+
+tempr(){
+  echo -e "\uE01D $(acpi -t | cut -d ' ' -f 4)°"
 }
 
 mem(){
   used=$(free -m | awk '/^Mem/ {print $3}')
-  echo "MEM $used""MB"
+  echo -e "\uE028 ${used}MiB"
 }
 
 net(){
-  ifc=$(ifconfig -s -a | grep RU)
-
-  echo -n "NET "
-  (echo $ifc | grep eth &>/dev/null) && echo -n "eth "
-  (echo $ifc | grep wlan &>/dev/null) && echo -n "wlan "
-  (echo $ifc | grep ppp &>/dev/null) && echo -n "ppp "
+  echo -en "\uE048 "
+  nets=$(ip -o link show up | cut -d ' ' -f 2 | cut -d ':' -f 1 | grep -v lo)
+  echo $(echo $nets | sed -r 's/\n/ /g')
 }
 
-mailcount(){
-  echo "MAIL $(ls -1 ~/mail/INBOX/new | wc -l)"
+mails(){
+  echo -e "\uE103 $(ls -1 ~/mail/INBOX/new | wc -l)"
+}
+
+vol(){
+  echo -e "\uE05D $(amixer get Master | tail -1 | sed -r 's/.*\[(.*)%\].*/\1/')%"
 }
 
 while true; do
-  xsetroot -name "$(bat) · $(cpu) · $(mem) · $(net)· $(mailcount) · $(date +%H:%M:%S)"
+  xsetroot -name "$(bat)  $(cpu)  $(tempr)  $(mem)  $(net)  $(mails)  $(vol)  \
+$(echo -e "\uE015") $(date +%H:%M:%S)"
   sleep 1s
 done
 
