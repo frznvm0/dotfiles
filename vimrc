@@ -15,14 +15,17 @@ set number
 set ruler
 set backspace=indent,eol,start
 set laststatus=2
-set scrolloff=20
+set scrolloff=999
+set matchpairs+=<:>
+set foldmethod=indent
+set omnifunc=syntaxcomplete#Complete
 set autowrite
 set backup
 set directory=~/.vim/backup
 set backupdir=~/.vim/backup
 
 " Tabs
-set tabstop=8
+set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
@@ -46,7 +49,7 @@ set hlsearch
 set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc
-nnoremap <leader><space> :noh<cr>
+nnoremap <leader><space> :noh<CR>
 
 " Taglist & NERDTree
 noremap <leader>t :TlistToggle<CR>
@@ -66,7 +69,7 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 " Misc keybindings
-noremap <leader><tab> :tab sball<CR>
+noremap <leader><Tab> :tab sball<CR>
 nnoremap <leader>v V`]
 nnoremap <leader>q gqip
 inoremap jj <ESC>
