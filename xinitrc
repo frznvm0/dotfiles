@@ -28,9 +28,6 @@ export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 urxvtd -q -o -f &
 (sleep 1s && urxvtc) &
 
-# Skype
-(sleep 5s && skype) &
-
 # Start WM
 exec dwm
 
