@@ -12,6 +12,7 @@ set sort = 'threads'
 set sort_aux = 'last-date-received'
 set abort_unmodified = no
 set move = no
+set editor = '/usr/bin/vim'
 
 # Headers
 ignore "Authentication-Results:"
@@ -19,6 +20,25 @@ ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
 hdr_order Date From To Cc 
 
-# Colors (download http://git.io/p9JE-g to ~/mail/.colors)
-source ~/mail/.colors/mutt-colors-solarized-dark-16.muttrc
+# Colors
+color normal white default
+color attachment brightyellow default
+color hdrdefault yellow default
+color header brightred default Subject
+color indicator black yellow
+color markers brightred default
+color quoted green default
+color signature cyan default
+color status brightcyan black
+color tilde blue default
+color tree red default
+color body brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
+color body brightblue default (https?|ftp)://[\-\.\,/%~_:?\#a-zA-Z0-9]+
+color quoted1 brightyellow default
+color quoted2 red default
+color signature cyan default
+color error red default
+
+# GnuPG
+source ~/mail/.crypto.muttrc
 
