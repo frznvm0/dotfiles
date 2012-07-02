@@ -13,6 +13,7 @@ set showcmd
 set hidden
 set number
 set ruler
+set vb t_vb=
 set backspace=indent,eol,start
 set laststatus=2
 set scrolloff=999
@@ -38,7 +39,7 @@ set colorcolumn=80
 
 " Invisible characters
 set listchars=tab:▸\ ,eol:¬,trail:·
-noremap <leader>l :set list!<CR>
+map <leader>l :set list!<CR>
 
 " Searching
 set ignorecase
@@ -48,32 +49,32 @@ set hlsearch
 set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc
-nnoremap <leader><space> :noh<CR>
+nmap <leader><space> :noh<CR>
 
 " Taglist & NERDTree
-noremap <leader>t :TlistToggle<CR>
-noremap <leader>n :NERDTree<CR>
-noremap <leader>m :NERDTreeClose<CR>
+map <leader>t :TlistToggle<CR>
+map <leader>n :NERDTree<CR>
+map <leader>m :NERDTreeClose<CR>
 
 " Help key to ESC
-noremap <F1> <ESC>
-nnoremap <F1> <ESC>
-inoremap <F1> <ESC>
-vnoremap <F1> <ESC>
+map <F1> <ESC>
+nmap <F1> <ESC>
+imap <F1> <ESC>
+vmap <F1> <ESC>
 
 " Window movement
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+nmap <C-c> <C-w>c
 
 " Misc keybindings
-noremap <leader><Tab> :tab sball<CR>
-nnoremap <leader>v V`]
-nnoremap <leader>q gqip
-inoremap jj <ESC>
-nnoremap <Tab> %
-vnoremap <Tab> %
+map <leader><Tab> :tab sball<CR>
+nmap <leader>v V`]
+nmap <leader>q gqip
+nmap <Tab> %
+vmap <Tab> %
 
 " Initialize Pathogen
 call pathogen#infect()
@@ -111,8 +112,8 @@ if has("autocmd")
       \ endif
 
   au BufRead,BufNewFile {Gemfile,Rakefile,Guardfile,config.ru} set ft=ruby
-  au FileType make set noex st=8 sts=8 sw=8
-  au FileType c set noex st=8 sts=8 sw=8
+  au FileType make set noet st=8 sts=8 sw=8
+  au FileType c set noet st=8 sts=8 sw=8
   au FileType python set st=4 sts=4 sw=4
   au BufRead,BufNewFile *.{md,markdown} set st=4 sts=4 sw=4
 
