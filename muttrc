@@ -5,40 +5,31 @@ set spoolfile    = +INBOX
 set postponed    = +Drafts
 set record       = +Sent
 
-# General settings
-set header_cache = ~/mail/.hcache
-set edit_headers = yes
+# Display settings
 set sort = 'threads'
-set sort_aux = 'last-date-received'
-set abort_unmodified = no
+set sort_aux = 'reverse-date-received'
+set pager_stop = yes
+set pager_index_lines = 16
 set move = no
+
+# Replies
+set fast_reply = yes
+set include = yes
+set attribution = "On %d, %n <%a> wrote:\n"
+
+# External programs
 set editor = '/usr/bin/vim'
+set sendmail = '/usr/bin/msmtp'
 
 # Headers
+set header_cache = ~/mail/.hcache
+set edit_headers = yes
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
 hdr_order Date From To Cc 
 
-# Colors
-color normal white default
-color attachment brightyellow default
-color hdrdefault yellow default
-color header brightred default Subject
-color indicator black yellow
-color markers brightred default
-color quoted green default
-color signature cyan default
-color status brightcyan black
-color tilde blue default
-color tree red default
-color body brightred default [\-\.+_a-zA-Z0-9]+@[\-\.a-zA-Z0-9]+
-color body brightblue default (https?|ftp)://[\-\.\,/%~_:?\#a-zA-Z0-9]+
-color quoted1 brightyellow default
-color quoted2 red default
-color signature cyan default
-color error red default
-
-# GnuPG
-source ~/mail/.crypto.muttrc
+# Colors and GPG support
+source ~/mail/solarized-dark-16.muttrc
+source ~/mail/crypto.muttrc
 
