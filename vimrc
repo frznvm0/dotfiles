@@ -16,7 +16,6 @@ set ruler
 set backspace=indent,eol,start
 set laststatus=2
 set scrolloff=999
-set matchpairs+=<:>
 set foldmethod=indent
 set omnifunc=syntaxcomplete#Complete
 set autowrite
@@ -86,6 +85,9 @@ else
   set background=dark
 endif
 colorscheme solarized
+
+" Display current branch in statusline
+set statusline="%{fugitive#statusline()}"
 
 " Set snipmate tags
 let g:surround_45 = "<% \r %>"
