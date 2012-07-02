@@ -80,7 +80,12 @@ vnoremap <Tab> %
 call pathogen#infect()
 
 " Color scheme
-colorscheme Tomorrow-Night
+if has('gui_running')
+  set background=light
+else
+  set background=dark
+endif
+colorscheme solarized
 
 " Set snipmate tags
 let g:surround_45 = "<% \r %>"
