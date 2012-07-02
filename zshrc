@@ -19,7 +19,7 @@ setopt promptsubst
 
 # Colors
 autoload colors && colors
-eval "`dircolors`" # Sets LS_COLORS
+eval "`dircolors $HOME/.zsh/dircolors`" # Sets LS_COLORS
 
 # Set prompt
 export PS1="%F{cyan}%n%{$reset_color%} at %F{green}%m%{$reset_color%} in %F{yellow}%~%{$reset_color%} › "
