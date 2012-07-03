@@ -106,11 +106,9 @@ if has("autocmd")
       \   exe "normal! g`\"" |
       \ endif
 
-  au BufRead,BufNewFile {Gemfile,Rakefile,Guardfile,config.ru} set ft=ruby
-  au FileType make set noet st=8 sts=8 sw=8
-  au FileType c set noet st=8 sts=8 sw=8
-  au FileType python set st=4 sts=4 sw=4
-  au BufRead,BufNewFile *.{md,markdown} set st=4 sts=4 sw=4
+  au BufRead,BufNewFile {Gemfile,Rakefile,Guardfile,*.ru} set ft=ruby
+  au FileType make,c setlocal ts=8 sts=8 sw=8 noet
+  au FileType python,markdown setlocal ts=4 sts=4 sw=4
 
 endif
 
