@@ -17,7 +17,7 @@ set vb t_vb=
 set backspace=indent,eol,start
 set laststatus=2
 set scrolloff=999
-set foldmethod=indent
+set foldmethod=syntax
 set omnifunc=syntaxcomplete#Complete
 set autowrite
 set backup
@@ -25,16 +25,13 @@ set directory=~/.vim/backup
 set backupdir=~/.vim/backup
 
 " Tabs
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
+set ts=2 sts=2 sw=2 et
 set smarttab
 
 " Wrapping
-set wrap
+set wrap linebreak
 set textwidth=76
-set formatoptions=qrn1
+set formatoptions=ctq
 set colorcolumn=80
 
 " Invisible characters
@@ -42,9 +39,7 @@ set listchars=tab:▸\ ,eol:¬,trail:·
 map <leader>l :set list!<CR>
 
 " Searching
-set ignorecase
-set smartcase
-set incsearch
+set ignorecase smartcase
 set hlsearch
 set wildmenu
 set wildmode=list:longest,list:full
