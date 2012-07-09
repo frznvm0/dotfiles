@@ -22,7 +22,7 @@ autoload colors && colors
 eval "`dircolors $HOME/.zsh/dircolors`" # Sets LS_COLORS
 
 # Set prompt
-export PS1="%F{cyan}%n%{$reset_color%} at %F{green}%m%{$reset_color%} in %F{yellow}%~%{$reset_color%} › "
+export PS1="%(!.%F{red}.%F{cyan})%n%F{reset} at %F{green}%m%F{reset} in %F{yellow}%~%F{reset} %# "
 
 # Refresh RPS1
 function precmd {
