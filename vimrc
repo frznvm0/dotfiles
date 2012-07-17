@@ -20,9 +20,8 @@ set scrolloff=999
 set foldmethod=syntax
 set omnifunc=syntaxcomplete#Complete
 set autowrite
-set backup
-set directory=~/.vim/backup
-set backupdir=~/.vim/backup
+set nobackup
+set directory=/tmp
 
 " Tabs
 set ts=2 sts=2 sw=2 et
@@ -73,6 +72,7 @@ vmap <Tab> %
 
 " Initialize Pathogen
 call pathogen#infect()
+call pathogen#helptags()
 
 " Color scheme
 if has('gui_running')
