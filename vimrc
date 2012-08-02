@@ -8,7 +8,6 @@ let mapleader = ","
 set nocompatible
 set encoding=utf-8
 set autoindent
-set showmode
 set showcmd
 set hidden
 set number
