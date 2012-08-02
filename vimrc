@@ -50,6 +50,11 @@ map <leader>t :TlistToggle<CR>
 map <leader>n :NERDTree<CR>
 map <leader>m :NERDTreeClose<CR>
 
+" Clipboard
+map <leader>y "*y
+map <leader>yy "*Y
+map <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
+
 " Help key to ESC
 map <F1> <ESC>
 nmap <F1> <ESC>
@@ -81,6 +86,7 @@ else
   set background=dark
 endif
 colorscheme solarized
+call togglebg#map("<F5>")
 
 " Display current branch in statusline
 set statusline="%{fugitive#statusline()}"
