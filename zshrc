@@ -1,3 +1,6 @@
+# Load rbenv
+eval "$(rbenv init -)"
+
 # Load scirpts and set umask
 for script ($HOME/.zsh/*.zsh) source $script
 umask 077
