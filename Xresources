@@ -1,8 +1,7 @@
 Xcursor.theme: Vanilla-DMZ
 
-URxvt.font: -*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*
-URxvt.boldFont: -*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*
-URxvt.boldItalicFont: -*-terminus-medium-r-normal-*-14-*-*-*-*-*-*-*
+URxvt.font: xft:inconsolata:pixelsize=14
+URxvt.xftAntialias: true
 URxvt.scrollBar: false
 URxvt.geometry: 129x47
 URxvt.transparent: true

@@ -1,3 +1,3 @@
 set guioptions-=T
 set guioptions-=m
-set lines=55 columns=100
+set guifont=Inconsolata\ 11
