@@ -1,6 +1,6 @@
 # dotfiles
 
-These are my dotfiles. The only dependency for installation is `make(1)`.
+These are my dotfiles. You need `git(1)` and `make(1)` for installation.
 
 ## Installation
 
@@ -8,13 +8,13 @@ These are my dotfiles. The only dependency for installation is `make(1)`.
     $ cd ~/.dotfiles
     $ make
 
-## To update to the latest version
+## Upgrading to latest version
 
     $ make update
 
-## To uninstall
+## Removal
 
-    $ make uninstall
+    $ make uninstall # optionally: rm -rf ~/.dotfiles
 
 ## License
 
