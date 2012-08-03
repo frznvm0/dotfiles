@@ -74,6 +74,9 @@ nmap <leader>q gqip
 nmap <Tab> %
 vmap <Tab> %
 
+" Use fancy statusline symbols
+let g:Powerline_symbols = 'fancy'
+
 " Initialize Pathogen
 call pathogen#infect()
 call pathogen#helptags()
