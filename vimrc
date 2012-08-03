@@ -44,8 +44,7 @@ set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc
 nmap <leader><space> :noh<CR>
 
-" Taglist & NERDTree
-map <leader>t :TlistToggle<CR>
+" NERDTree
 map <leader>n :NERDTree<CR>
 map <leader>m :NERDTreeClose<CR>
 
@@ -74,9 +73,6 @@ nmap <leader>q gqip
 nmap <Tab> %
 vmap <Tab> %
 
-" Use fancy statusline symbols
-let g:Powerline_symbols = 'fancy'
-
 " Initialize Pathogen
 call pathogen#infect()
 call pathogen#helptags()
@@ -90,8 +86,8 @@ endif
 colorscheme solarized
 call togglebg#map("<F5>")
 
-" Display current branch in statusline
-set statusline="%{fugitive#statusline()}"
+" Use fancy statusline symbols
+let g:Powerline_symbols = 'fancy'
 
 " Set snipmate tags
 let g:surround_45 = "<% \r %>"
