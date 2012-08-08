@@ -66,8 +66,19 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-c> <C-w>c
 
+" Multipurpose Tab key
+function! InsertTabWrapper()
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  else
+    return "\<c-p>"
+  endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
+
 " Misc keybindings
-map <leader><Tab> :tab sball<CR>
 nmap <leader>v V`]
 nmap <leader>q gqip
 nmap <Tab> %
