@@ -34,3 +34,6 @@
 [submodule "vim/bundle/vimux"]
 	path = vim/bundle/vimux
 	url = git://github.com/benmills/vimux.git
+[submodule "vim/bundle/turbux"]
+	path = vim/bundle/turbux
+	url = git://github.com/jgdavey/vim-turbux.git
