@@ -16,7 +16,6 @@ set vb t_vb=
 set backspace=indent,eol,start
 set laststatus=2
 set scrolloff=999
-set foldmethod=syntax
 set omnifunc=syntaxcomplete#Complete
 set autowrite
 set nobackup
@@ -108,7 +107,13 @@ let g:surround_61 = "<%= \r %>"
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-let g:SuperTabDefaultCompletionType = "context"
+
+" Vimux keybinds
+map <leader>rp :VimuxPromptCommand<CR>
+map <leader>rl :VimuxRunLastCommand<CR>
+map <leader>ri :VimuxInspectRunner<CR>
+map <leader>rq :VimuxCloseRunner<CR>
+map <leader>rs :VimuxInterruptRunner<CR>
 
 " Autocommands
 if has("autocmd")
