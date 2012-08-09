@@ -24,6 +24,7 @@ install:
 update:
 	git pull
 	git submodule update
+	git submodule foreach git pull origin master
 
 remove:
 	rm -rv "${HOME}/.vim"
