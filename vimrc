@@ -108,6 +108,9 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 
+" Command-T to Ctrl-P
+map <c-p> :CommandT<CR>
+
 " Vimux keybinds
 map <leader>rp :VimuxPromptCommand<CR>
 map <leader>rl :VimuxRunLastCommand<CR>
