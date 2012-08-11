@@ -7,9 +7,10 @@ URxvt.geometry: 129x47
 URxvt.transparent: true
 URxvt.shading: 10
 
-URxvt.perl-ext-common: default,matcher
-URxvt.urlLauncher: /usr/bin/chromium
-URxvt.matcher.button: 1
+URxvt.perl-ext: default,url-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.urlLauncher: open
+URxvt.underlineURLs: true
 
 #define S_base03 #002b36
 #define S_base02 #073642
