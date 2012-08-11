@@ -34,3 +34,6 @@
 [submodule "vim/bundle/turbux"]
 	path = vim/bundle/turbux
 	url = git://github.com/jgdavey/vim-turbux.git
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = git://github.com/wincent/Command-T.git
