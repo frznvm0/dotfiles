@@ -25,6 +25,8 @@ update:
 	git pull
 	git submodule update
 	git submodule foreach git pull origin master
+	cd vim/bundle/command-t/ruby/command-t && ruby extconf.rb
+	make -C vim/bundle/command-t/ruby/command-t
 
 remove:
 	rm -rv "${HOME}/.vim"
