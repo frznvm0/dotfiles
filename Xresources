@@ -3,12 +3,11 @@ Xcursor.theme: Vanilla-DMZ
 URxvt.font: xft:inconsolata for powerline:pixelsize=14
 URxvt.xftAntialias: true
 URxvt.scrollBar: false
-URxvt.geometry: 129x47
 URxvt.transparent: true
 URxvt.shading: 10
 
 URxvt.perl-ext: default,url-select
-URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.M-o: perl:url-select:select_next
 URxvt.urlLauncher: open
 URxvt.underlineURLs: true
 
