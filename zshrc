@@ -19,6 +19,7 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
 # Misc settings
+setopt nobeep
 setopt multios
 setopt autocd
 setopt autopushd
