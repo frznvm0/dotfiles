@@ -22,8 +22,9 @@ set nobackup
 set directory=/tmp
 
 " Tabs
-set ts=2 sts=2 sw=2 et
+set expandtab
 set smarttab
+set tabstop=8 softtabstop=2 shiftwidth=2
 
 " Wrapping
 set wrap linebreak
@@ -108,7 +109,7 @@ let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
 
-" Command-T to Ctrl-P
+" Map Ctrl-P to CommandT
 map <c-p> :CommandT<CR>
 
 " Vimux keybinds
@@ -130,8 +131,9 @@ if has("autocmd")
       \ endif
 
   au BufRead,BufNewFile {Gemfile,Rakefile,Guardfile,*.ru} set ft=ruby
-  au FileType make,c setlocal ts=8 sts=8 sw=8 noet
-  au FileType python,markdown setlocal ts=4 sts=4 sw=4
+  au BufRead,BufNewFile *.{md,mkd,mdown,markdown} set ft=markdown
+  au FileType make,c setlocal noet sts=0 sw=8
+  au FileType python,markdown setlocal sts=4 sw=4
 
 endif
 
