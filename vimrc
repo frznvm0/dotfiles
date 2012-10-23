@@ -29,7 +29,7 @@ set tabstop=8 softtabstop=2 shiftwidth=2
 " Wrapping
 set wrap linebreak
 set textwidth=76
-set formatoptions=ctq
+set formatoptions=cqrj
 set colorcolumn=80
 
 " Invisible characters
@@ -134,6 +134,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.{md,mkd,mdown,markdown} set ft=markdown
   au FileType make,c setlocal noet sts=0 sw=8
   au FileType python,markdown setlocal sts=4 sw=4
+  au FileType markdown setlocal formatoptions+=an
 
 endif
 
