@@ -4,13 +4,13 @@ if [ "$(tty)" = "/dev/tty1" ]; then
   clear; exec startx &> ~/.xlog
 fi
 
-if [ -e "$HOME/.ssh/auth.sock" ]; then
-  export SSH_AUTH_SOCK="$HOME/.ssh/auth.sock"
-  export SSH_AGENT_PID=$(cat "$HOME/.ssh/agent.pid")
+if [ -f /tmp/ssh-agent-$(id -u) ]; then
+  export SSH_AUTH_SOCK=$(head -1 /tmp/ssh-agent-$(id -u))
+  export SSH_AGENT_PID=$(tail -1 /tmp/ssh-agent-$(id -u))
 else
   eval `ssh-agent`
-  ln -s "$SSH_AUTH_SOCK" "$HOME/.ssh/auth.sock"
-  echo "$SSH_AGENT_PID" > "$HOME/.ssh/agent.pid"
+  echo "$SSH_AUTH_SOCK" > /tmp/ssh-agent-$(id -u)
+  echo "$SSH_AGENT_PID" >> /tmp/ssh-agent-$(id -u)
   echo "Please run ssh-add to add your keys to the agent"
 fi
 
