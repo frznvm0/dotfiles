@@ -1,7 +1,7 @@
 source ~/.zshenv
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-  clear; exec startx &> ~/.xlog
+  clear; exec xinit &> ~/.xlog
 fi
 
 if [ -f /tmp/ssh-agent-$(id -u) ]; then
