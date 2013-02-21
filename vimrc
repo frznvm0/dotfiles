@@ -44,10 +44,6 @@ set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc
 nmap <leader><space> :noh<CR>
 
-" NERDTree
-map <leader>n :NERDTree<CR>
-map <leader>m :NERDTreeClose<CR>
-
 " Clipboard
 map <leader>y "*y
 map <leader>yy "*Y
