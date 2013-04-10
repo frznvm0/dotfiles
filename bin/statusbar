@@ -37,10 +37,10 @@ mem(){
 }
 
 net(){
-  ifaces=$(ip -o link show up | grep -v lo)
+  ifaces=$(ip -o link show up | grep -v NO-CARRIER | grep -v lo)
   echo -en "\uE048 "
-  test -z "$ifaces" && echo "-" && return
-  echo "$ifaces" | cut -d' ' -f2 | cut -d':' -f1 | sed -r 's/\n/ /g'
+  test -z "$ifaces" && echo "- " && return
+  echo "$ifaces" | cut -d' ' -f2 | cut -d: -f1 | tr '\n' ' '
 }
 
 mails(){
@@ -52,7 +52,7 @@ vol(){
 }
 
 while true; do
-  xsetroot -name "$(bat)  $(cpu)  $(tempr)  $(mem)  $(net)  $(mails)  $(vol)  \
+  xsetroot -name "$(bat)  $(cpu)  $(tempr)  $(mem)  $(net) $(mails)  $(vol)  \
 $(echo -e "\uE015") $(date +%H:%M)"
   sleep 2s
 done
