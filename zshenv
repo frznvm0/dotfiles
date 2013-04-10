@@ -5,8 +5,8 @@ BROWSER='open'
 PAGER='less'
 LESS='-R'
 LC_CTYPE=$LANG
-GREP_OPTIONS='--color=auto'
-GREP_COLOR='1;32'
+GREP_OPTIONS='--color=always'
+GREP_COLOR='1;37'
 RUBYLIB='.'
 NODE_PATH='./node_modules:/usr/local/lib/node_modules:/usr/lib/node_modules'
 
