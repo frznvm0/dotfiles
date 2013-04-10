@@ -1,6 +1,7 @@
 [core]
 	quotepath = false
 	editor = vim
+	autocrlf = input
 [alias]
 	co = checkout
 	st = status -sb
@@ -11,3 +12,5 @@
 	status = auto
 	branch = auto
 	ui = always
+[push]
+	default = simple
