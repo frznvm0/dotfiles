@@ -1,6 +1,6 @@
 Xcursor.theme: Vanilla-DMZ
 
-URxvt.font: xft:droid sans mono dotted for powerline:size=9
+URxvt.font: xft:Inconsolata for Powerline:size=10
 URxvt.xftAntialias: true
 URxvt.scrollBar: false
 URxvt.transparent: true
