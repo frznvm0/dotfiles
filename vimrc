@@ -1,11 +1,30 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Bundles
+Bundle 'gmarik/vundle'
+Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
+Bundle 'Shougo/neocomplcache'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rails'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'groenewege/vim-less'
+Bundle 'altercation/vim-colors-solarized'
+
 filetype plugin indent on
 syntax on
 
-" Leader
+" Global variables
 let mapleader = ","
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
 
 " Basic options
-set nocompatible
 set encoding=utf-8
 set autoindent
 set showcmd
@@ -15,6 +34,7 @@ set ruler
 set vb t_vb=
 set backspace=indent,eol,start
 set laststatus=2
+set noshowmode
 set scrolloff=999
 set omnifunc=syntaxcomplete#Complete
 set autowrite
@@ -62,23 +82,14 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-c> <C-w>c
 
-" Multipurpose Tab key
-function! InsertTabWrapper()
-  let col = col('.') - 1
-  if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-  else
-    return "\<c-p>"
-  endif
-endfunction
-inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-inoremap <s-tab> <c-n>
-
 " Misc keybindings
 nmap <leader>v V`]
 nmap <leader>q gqip
 nmap <Tab> %
 vmap <Tab> %
+
+" Easier completion in Insert mode
+imap <Tab> <C-n>
 
 " Color scheme
 if has('gui_running')
@@ -88,11 +99,6 @@ else
 endif
 colorscheme solarized
 call togglebg#map("<F5>")
-
-" Completion
-let g:rubycomplete_buffer_loading = 1
-let g:rubycomplete_classes_in_global = 1
-let g:rubycomplete_rails = 1
 
 " Autocommands
 if has("autocmd")
