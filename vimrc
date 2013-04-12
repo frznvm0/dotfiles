@@ -80,10 +80,6 @@ nmap <leader>q gqip
 nmap <Tab> %
 vmap <Tab> %
 
-" Initialize Pathogen
-call pathogen#infect()
-call pathogen#helptags()
-
 " Color scheme
 if has('gui_running')
   set background=light
@@ -93,27 +89,10 @@ endif
 colorscheme solarized
 call togglebg#map("<F5>")
 
-" Use fancy statusline symbols
-let g:Powerline_symbols = 'fancy'
-
-" Set snipmate tags
-let g:surround_45 = "<% \r %>"
-let g:surround_61 = "<%= \r %>"
-
 " Completion
 let g:rubycomplete_buffer_loading = 1
 let g:rubycomplete_classes_in_global = 1
 let g:rubycomplete_rails = 1
-
-" Map Ctrl-P to CommandT
-map <c-p> :CommandT<CR>
-
-" Vimux keybinds
-map <leader>rp :VimuxPromptCommand<CR>
-map <leader>rl :VimuxRunLastCommand<CR>
-map <leader>ri :VimuxInspectRunner<CR>
-map <leader>rq :VimuxCloseRunner<CR>
-map <leader>rs :VimuxInterruptRunner<CR>
 
 " Autocommands
 if has("autocmd")
