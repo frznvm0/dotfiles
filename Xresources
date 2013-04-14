@@ -4,51 +4,31 @@ URxvt.font: xft:Inconsolata for Powerline:size=10
 URxvt.xftAntialias: true
 URxvt.scrollBar: false
 URxvt.transparent: true
-URxvt.shading: 10
+URxvt.shading: 30
+URxvt.fading: 40
+URxvt.fadeColor: #002b36
 
 URxvt.perl-ext: default,url-select
 URxvt.keysym.M-o: perl:url-select:select_next
 URxvt.urlLauncher: open
 URxvt.underlineURLs: true
 
-#define S_base03 #002b36
-#define S_base02 #073642
-#define S_base01 #586e75
-#define S_base00 #657b83
-#define S_base0 #839496
-#define S_base1 #93a1a1
-#define S_base2 #eee8d5
-#define S_base3 #fdf6e3
-#define S_yellow #b58900
-#define S_orange #cb4b16
-#define S_red #dc322f
-#define S_magenta #d33682
-#define S_violet #6c71c4
-#define S_blue #268bd2
-#define S_cyan #2aa198
-#define S_green #859900
-
-URxvt.background: S_base03
-URxvt.foreground: S_base00
-URxvt.fading: 40
-URxvt.fadeColor: S_base03
-URxvt.cursorColor: S_base1
-URxvt.pointerColorBackground: S_base01
-URxvt.pointerColorForeground: S_base1
-URxvt.color0: S_base02
-URxvt.color8: S_base03
-URxvt.color1: S_red
-URxvt.color9: S_orange
-URxvt.color2: S_green
-URxvt.color10: S_base01
-URxvt.color3: S_yellow
-URxvt.color11: S_base00
-URxvt.color4: S_blue
-URxvt.color12: S_base0
-URxvt.color5: S_magenta
-URxvt.color13: S_violet
-URxvt.color6: S_cyan
-URxvt.color14: S_base1
-URxvt.color7: S_base2
-URxvt.color15: S_base3
+URxvt.background: #1d1f21
+URxvt.foreground: #c5c8c6
+URxvt.color0: #282a2e
+URxvt.color8: #373b41
+URxvt.color1: #c82829
+URxvt.color9: #cf604c
+URxvt.color2: #718c00
+URxvt.color10: #99ad6a
+URxvt.color3: #eab700
+URxvt.color11: #d8ad4c
+URxvt.color4: #1f5dae
+URxvt.color12: #5f819d
+URxvt.color5: #a037b0
+URxvt.color13: #8959a8
+URxvt.color6: #3e999f
+URxvt.color14: #5e8d87
+URxvt.color7: #707880
+URxvt.color15: #c5c8c6
 

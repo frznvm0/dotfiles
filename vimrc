@@ -14,7 +14,7 @@ Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-rails'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'groenewege/vim-less'
-Bundle 'altercation/vim-colors-solarized'
+Bundle 'w0ng/vim-hybrid'
 
 filetype plugin indent on
 syntax on
@@ -92,13 +92,9 @@ vmap <Tab> %
 imap <Tab> <C-n>
 
 " Color scheme
-if has('gui_running')
-  set background=light
-else
-  set background=dark
-endif
-colorscheme solarized
-call togglebg#map("<F5>")
+set t_Co=256
+let g:hybrid_use_Xresources = 1
+colorscheme hybrid
 
 " Autocommands
 if has("autocmd")
