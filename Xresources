@@ -1,6 +1,6 @@
 Xcursor.theme: Vanilla-DMZ
 
-URxvt.font: xft:Inconsolata for Powerline:size=10,xft:Open Sans:size=10
+URxvt.font: xft:Inconsolata for Powerline:size=10
 URxvt.xftAntialias: true
 URxvt.scrollBar: false
 URxvt.transparent: true
@@ -9,9 +9,8 @@ URxvt.fading: 40
 URxvt.fadeColor: #002b36
 
 URxvt.perl-ext: default,url-select
-URxvt.keysym.M-o: perl:url-select:select_next
+URxvt.keysym.M-f: perl:url-select:select_next
 URxvt.urlLauncher: open
-URxvt.underlineURLs: true
 
 URxvt.background: #1d1f21
 URxvt.foreground: #c5c8c6
