@@ -23,36 +23,36 @@ cpu(){
   sleep 0.5
   read cpu a b c idle rest < /proc/stat
   total=$((a+b+c+idle))
-  percent="$((100*( (total-prevtotal) - (idle-previdle) ) / (total-prevtotal) ))"
+  percent="$((100*((total-prevtotal) - (idle-previdle)) / (total-prevtotal) ))"
   echo -e "\uE026 $percent%"
 }
 
 tempr(){
-  echo -e "\uE01D $(acpi -t | cut -d ' ' -f 4)°"
+  echo -e "\uE01D $(acpi -t | cut -d\  -f4)°"
 }
 
 mem(){
-  used=$(free -m | awk '/^Mem/ {print $3}')
-  echo -e "\uE028 ${used}MiB"
+  echo -e "\uE028 $(free -m | awk '/^Mem/ {print $3}')MiB"
 }
 
 net(){
-  ifaces=$(ip -o link show up | grep -v NO-CARRIER | grep -v lo)
   echo -en "\uE048 "
-  test -z "$ifaces" && echo "- " && return
-  echo "$ifaces" | cut -d' ' -f2 | cut -d: -f1 | tr '\n' ' '
+  profiles="$(netctl list | awk '/^\*/ {print $2}' | tr \\n \  | sed 's/ $//')"
+  echo "${profiles:--}"
 }
 
 mails(){
   echo -e "\uE103 $(ls -1 ~/mail/INBOX/new | wc -l)"
 }
 
-vol(){
-  echo -e "\uE05D $(amixer get Master | tail -1 | sed -r 's/.*\[(.*)%\].*/\1/')%"
+mus() {
+  echo -en "\uE0FE "
+  current="$(mpc current 2>/dev/null)"
+  echo "${current:--}"
 }
 
 while true; do
-  xsetroot -name "$(bat)  $(cpu)  $(tempr)  $(mem)  $(net) $(mails)  $(vol)  \
+  xsetroot -name "$(bat)  $(cpu)  $(tempr)  $(mem)  $(net)  $(mus)  $(mails)  \
 $(echo -e "\uE015") $(date +%H:%M)"
   sleep 2s
 done
