@@ -18,8 +18,9 @@ autocutsel -selection PRIMARY -fork &
 # NumLock
 numlockx on
 
-# Qt apps should use GTK+ theme
+# GTK env. variables
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export GTK_IM_MODULE=xim
 
 # Statusbar & wallpaper
 ~/bin/statusbar &
@@ -27,7 +28,7 @@ sh ~/.fehbg
 
 # URxvt
 urxvtd -q -o -f &
-(sleep 1s && urxvtc) &
+(sleep 1s && urxvtc -e tmux new -As dev) &
 
 # Start WM
 exec dwm
