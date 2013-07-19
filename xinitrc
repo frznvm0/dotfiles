@@ -5,6 +5,7 @@
 # Executed by startx (run your window manager from here)
 
 # X settings
+setxkbmap -option compose:caps
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
 xset +fp /usr/share/fonts/local
