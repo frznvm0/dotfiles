@@ -1,0 +1,70 @@
+# vim:ft=muttrc
+
+## Main colors
+color normal default default
+color status default black
+color indicator black yellow
+color tree blue default
+color error brightred default
+color message brightyellow default
+
+## Message states
+
+# messages to me
+uncolor index "~P"
+color index brightblack default "~P"
+
+# threads with new messages
+uncolor index "~(~N)"
+color index brightcyan default "~(~N)"
+
+# new messages
+uncolor index "~N"
+color index brightyellow default "~N"
+
+# tagged
+uncolor index "~T"
+color index brightgreen default "~T"
+
+# deleted
+uncolor index "~D"
+color index brightred default "~D"
+
+## Headers
+color header white default "^date:"
+color header green default "^from:"
+color header yellow default "^to:"
+color header yellow default "^cc:"
+color header brightblue default "^subject:"
+
+## Body
+
+# Basics
+color attachment brightblack default
+color search red brightblack
+color signature cyan default
+color tilde blue default
+
+# URLs
+color body brightblue default "(^|<| )mailto:[^ ]+@[^ ]( |>|$)"
+color body brightblue default "(^|<| )(http|https|ftp|file|telnet|news|finger)://[^ ]+( |>|$)"
+
+# Smileys
+color body brightmagenta default "(^| )+(|[<>|])[8;:](|[^ ])[)(/|DOPS]( |$)+"
+color body brightmagenta default "(^| )+[)(/|DOPS](|[^ ])[8;:](|[<>|])( |$)+"
+
+# Bold, underline, italic
+color body brightcyan default "(^| )\\*[^*]+\\*( |$)"
+color body brightcyan default "(^| )_[^_]+_( |$)"
+color body brightcyan default "(^| )/[^/]+/( |$)"
+
+# Quote blocks
+color quoted magenta default
+color quoted1 cyan default
+color quoted2 green default
+color quoted3 magenta default
+color quoted4 cyan default
+color quoted5 green default
+color quoted6 magenta default
+color quoted7 cyan default
+

@@ -1,0 +1,15 @@
+# vim:ft=muttrc
+
+bind index <Space> collapse-thread
+bind index gg first-entry
+bind index G last-entry
+bind pager / search
+bind pager j next-line
+bind pager k previous-line
+bind pager gg top
+bind pager G bottom
+bind pager <Space> toggle-quoted
+bind index,pager \# noop
+bind index,pager \& noop
+bind index,pager R group-reply
+

@@ -1,13 +1,13 @@
 # Mailbox
 set mbox_type    = Maildir
-set folder       = $HOME/mail
+set folder       = ~/mail
 set spoolfile    = +INBOX
 set postponed    = +Drafts
 set record       = +Sent
 
 # Display settings
-set sort = 'threads'
-set sort_aux = 'reverse-date-received'
+set sort = threads
+set sort_aux = reverse-date-received
 set pager_stop = yes
 set pager_index_lines = 16
 set move = no
@@ -18,18 +18,21 @@ set include = yes
 set attribution = "On %d, %n <%a> wrote:\n"
 
 # External programs
-set editor = '/usr/bin/vim'
-set sendmail = '/usr/bin/msmtp'
+set editor = /usr/bin/vim
+set sendmail = /usr/bin/msmtp
+set mailcap_path = ~/.mutt/mailcap
 
 # Headers
-set header_cache = ~/mail/.hcache
+set header_cache = ~/.mutt/.hcache
 set edit_headers = yes
 ignore "Authentication-Results:"
 ignore "DomainKey-Signature:"
 ignore "DKIM-Signature:"
-hdr_order Date From To Cc 
+hdr_order Date From To Cc Subject
 
-# Colors and GPG support
-source ~/mail/solarized-dark-16.muttrc
-source ~/mail/crypto.muttrc
+# Includes
+source ~/.mutt/keys.muttrc
+source ~/.mutt/colors.muttrc
+source ~/.mutt/gpg.muttrc
+source ~/.mutt/private.muttrc
 
