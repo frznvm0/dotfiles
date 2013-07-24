@@ -4,6 +4,9 @@
 #
 # Executed by startx (run your window manager from here)
 
+# Configure external display
+xrandr --output VGA1 --mode 1024x768 --left-of LVDS1
+
 # X settings
 setxkbmap -option compose:caps
 xrdb -merge ~/.Xresources
