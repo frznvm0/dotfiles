@@ -1,0 +1,31 @@
+follow_outside_symlinks "no"
+follow_inside_symlinks "yes"
+db_file "~/.mpd/db"
+sticker_file "~/.mpd/stickers"
+log_file "~/.mpd/log"
+pid_file "~/.mpd/pid"
+
+audio_output {
+  type "alsa"
+  name "default"
+  mixer_control "Master"
+}
+
+audio_output {
+  type "fifo"
+  name "viz_fifo"
+  path "/tmp/mpd.fifo"
+  format "44100:16:2"
+}
+
+playlist_plugin {
+  name "soundcloud"
+  enabled "true"
+  apikey "c4c979fd6f241b5b30431d722af212e8"
+}
+
+music_directory "~/music"
+playlist_directory "~/.mpd/playlists"
+log_level "secure"
+metadata_to_use "artist,album,title,track,name,genre,date,composer,performer,disc"
+auto_update "yes"
