@@ -134,7 +134,7 @@ if has("autocmd")
   au BufRead,BufNewFile *.{md,mkd,mdown,markdown} set ft=markdown
   au FileType make,c setlocal noet sts=0 sw=8
   au FileType python,markdown setlocal sts=4 sw=4
-  au FileType markdown setlocal formatoptions+=an spell textwidth=80
+  au FileType markdown setlocal fo+=an fo-=t spell textwidth=80
 
 endif
 
