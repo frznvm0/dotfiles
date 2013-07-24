@@ -9,7 +9,7 @@
 	unstage = reset HEAD --
 	# tee is needed because git appends arguments to the main command
 	open = !open https://github.com/$(git remote -v |\
-		sed -r 's/.*\\.com(:|\\/)(\\w+\\/\\w+).*/\\3/' | head -1)/$1 |\
+		sed -r 's/.*\\.com(:|\\/)(\\w+\\/\\w+).*/\\2/' | head -1)/$1 |\
 		tee
 [color]
 	diff = auto
