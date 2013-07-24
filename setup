@@ -1,0 +1,64 @@
+#!/bin/sh
+
+set -e
+DOTDIR="$(dirname "$(realpath "$0")")"
+
+# Repo clone URLs
+THIS_REPO="https://github.com/frznvm0/dotfiles.git"
+VUNDLE_REPO="https://github.com/gmarik/vundle.git"
+
+# Print error message and exit
+die(){
+  echo error: $*
+  exit 1
+}
+
+# Copy files and bin/ directory, update vim plugins
+copyfiles(){
+  for file in $(ls -1 "$DOTDIR" | egrep -v 'bin|setup|README\.md'); do
+    if [ -n "$1" -a -L "$HOME/.$file" ]; then
+      rm -v "$HOME/.$file" 2>/dev/null || true
+    elif [ -z "$1" ]; then
+      ln -vs "$DOTDIR/$file" "$HOME/.$file" 2>/dev/null || true
+    fi
+  done
+
+  [ -z "$1" ] && mkdir -p "$HOME/bin"
+
+  for file in $(ls -1 "$DOTDIR/bin"); do
+    if [ -n "$1" -a -L "$HOME/bin/$file" ]; then
+      rm -v "$HOME/bin/$file" 2>/dev/null || true
+    elif [ -z "$1" ]; then
+      ln -vs "$DOTDIR/bin/$file" "$HOME/bin/$file" 2>/dev/null || true
+    fi
+  done
+
+  [ -n "$1" ] && rmdir "$HOME/bin" &>/dev/null || true
+
+  [ -z "$1" ] && (type vim &>/dev/null && vim +BundleUpdate +qall)
+}
+
+# Hook mode
+[ -n "$GIT_DIR" ] && copyfiles && exit 0
+
+# Uninstall
+[ "$1" == "--remove" ] && copyfiles remove && exit 0
+
+# Check for git
+type git &>/dev/null || die "git not found"
+
+# One-liner install
+if [ "$0" == "sh" ]; then
+  DOTDIR="${1:-"$HOME/.dotfiles"}"
+  [ -e "$DOTDIR" ] && die "$DOTDIR already exists, use ´git pull´ to update"
+  git clone "$THIS_REPO" "$DOTDIR"
+fi
+
+# Install Vundle
+[ ! -e "$HOME/.vim/bundle/vundle" ] && \
+  git clone "$VUNDLE_REPO" "$HOME/.vim/bundle/vundle"
+
+# Copy files and set up post-merge hook (runs after ´git pull´)
+copyfiles
+ln -s "$DOTDIR/setup" "$DOTDIR/.git/hooks/post-merge"
+
