@@ -1,4 +1,4 @@
-mpd_music_dir = "/home/frznvm0/music"
+mpd_music_dir = "~/music"
 mpd_communication_mode = "notifications"
 mpd_crossfade_time = "3"
 
