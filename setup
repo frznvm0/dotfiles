@@ -19,7 +19,7 @@ copyfiles(){
     if [ -n "$1" -a -L "$HOME/.$file" ]; then
       rm -v "$HOME/.$file" 2>/dev/null || true
     elif [ -z "$1" ]; then
-      ln -vs "$DOTDIR/$file" "$HOME/.$file" 2>/dev/null || true
+      ln -Tvs "$DOTDIR/$file" "$HOME/.$file" 2>/dev/null || true
     fi
   done
 
@@ -29,7 +29,7 @@ copyfiles(){
     if [ -n "$1" -a -L "$HOME/bin/$file" ]; then
       rm -v "$HOME/bin/$file" 2>/dev/null || true
     elif [ -z "$1" ]; then
-      ln -vs "$DOTDIR/bin/$file" "$HOME/bin/$file" 2>/dev/null || true
+      ln -Tvs "$DOTDIR/bin/$file" "$HOME/bin/$file" 2>/dev/null || true
     fi
   done
 
@@ -39,10 +39,10 @@ copyfiles(){
 }
 
 # Hook mode
-[ -n "$GIT_DIR" ] && copyfiles && exit 0
+[ -n "$GIT_DIR" ] && (copyfiles; exit)
 
 # Uninstall
-[ "$1" == "--remove" ] && copyfiles remove && exit 0
+[ "$1" == "--remove" ] && (copyfiles remove; exit)
 
 # Check for git
 type git &>/dev/null || die "git not found"
@@ -60,5 +60,4 @@ fi
 
 # Copy files and set up post-merge hook (runs after ´git pull´)
 copyfiles
-ln -s "$DOTDIR/setup" "$DOTDIR/.git/hooks/post-merge"
-
+ln -s "$DOTDIR/setup" "$DOTDIR/.git/hooks/post-merge" || true
