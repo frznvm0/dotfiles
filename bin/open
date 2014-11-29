@@ -1,9 +1,4 @@
 #!/bin/sh
-
-if [[ -S /tmp/.X11-unix/X0 ]]; then
-  export GTK_IM_MODULE=xim
-  chromium $@ &>"$HOME/.chromium.log" &
-else
-  w3m $@
-fi
+chromium $@ &>>/tmp/chromium-${UID}.log &
+disown
 
