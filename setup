@@ -1,63 +1,99 @@
 #!/bin/sh
+# setup - Setup script for dotfiles
 
+# Helpers
+esc="\033["
+msg(){ echo -e "${esc}32m✓${esc}m $1"; }
+err(){ echo -e "${esc}31m✗${esc}m $1"; }
+ask(){
+  echo -en "${esc}34m?${esc}m $1"
+  if [ "$2" == "y" ]; then
+    local ans
+    read -sn1 ans
+    echo
+    [ "$ans" == y -o "$ans" == Y ] && return 0 || return 1
+  else
+    read -sn1 $2
+    echo
+  fi
+}
+
+# Prepare
 set -e
-DOTDIR="$(dirname "$(realpath "$0")")"
+type git &>/dev/null || (err "git is required"; exit 1)
+all_mode=""
 
-# Repo clone URLs
-THIS_REPO="https://github.com/frznvm0/dotfiles.git"
-VUNDLE_REPO="https://github.com/gmarik/vundle.git"
+# Link a file
+link_file(){
+  local dst="${2/"$HOME"/"~"}"
+  local mode=""
 
-# Print error message and exit
-die(){
-  echo error: $*
-  exit 1
+  if [ -e "$2" ]; then
+    # Set mode
+    if [ -z "$all_mode" ]; then
+      ask "$dst already exists. [s]kip, [S]kip all, [o]verwrite, \
+[O]verwrite all, [b]ackup or [B]ackup all? " mode
+      case "$mode" in
+        S) all_mode=skip ;;
+        O) all_mode=overwr ;;
+        B) all_mode=backup ;;
+      esac
+    fi
+
+    # Handle existing files
+    if [ "$all_mode" == skip -o "$mode" == s ]; then
+      msg "skipping $dst"
+      return
+    elif [ "$all_mode" == overwr -o "$mode" == o ]; then
+      rm -rf "$2" || err "cannot remove $dst"
+    elif [ "$all_mode" == backup -o "$mode" == b ]; then
+      mv "$2" "${2}.backup" || err "cannot move $dst"
+    fi
+  fi
+
+  # Link file
+  mkdir -p "$(dirname "$2")"
+  ln -s "$1" "$2" && msg "linked $dst" || err "cannot link to $dst"
 }
 
-# Copy files and bin/ directory, update vim plugins
-copyfiles(){
-  for file in $(ls -1 "$DOTDIR" | egrep -v 'bin|setup|README\.md'); do
-    if [ -n "$1" -a -L "$HOME/.$file" ]; then
-      rm -v "$HOME/.$file" 2>/dev/null || true
-    elif [ -z "$1" ]; then
-      ln -Tvs "$DOTDIR/$file" "$HOME/.$file" 2>/dev/null || true
+# Iterate trough files
+install_files(){
+  local files=$(find . -regextype posix-egrep \
+    -regex './(\.git.*|setup|README.md)' \
+    -prune -o -type f -print | sed 'st^./tt')
+  for file in $files; do
+    if [ "$(dirname "$file")" == bin ]; then
+      link_file "$(realpath "$file")" "$HOME/$file"
+    else
+      link_file "$(realpath "$file")" "$HOME/.$file"
     fi
   done
-
-  [ -z "$1" ] && mkdir -p "$HOME/bin"
-
-  for file in $(ls -1 "$DOTDIR/bin"); do
-    if [ -n "$1" -a -L "$HOME/bin/$file" ]; then
-      rm -v "$HOME/bin/$file" 2>/dev/null || true
-    elif [ -z "$1" ]; then
-      ln -Tvs "$DOTDIR/bin/$file" "$HOME/bin/$file" 2>/dev/null || true
-    fi
-  done
-
-  [ -n "$1" ] && rmdir "$HOME/bin" &>/dev/null || true
-
-  [ -z "$1" ] && (type vim &>/dev/null && vim +BundleUpdate +qall)
 }
+
+post_install(){
+  # Set up hook
+  hook="$DOT/.git/hooks/post-merge"
+  if [ \! -e "$hook" ] && ask "Set up git post-merge hook? [y/N] " y; then
+    echo ln -s "$(realpath "$0")" "$hook" &&
+      msg "linked $0 to .git/hooks/post-merge" || err "cannot link $0"
+  fi
+
+  # Install Vundle
+  if ask "Install Vundle.vim? [y/N] " y; then
+    git clone https://github.com/gmarik/Vundle.vim.git \
+      "$HOME/.vim/bundle/Vundle.vim"
+    vim +VundleInstall +qall
+  fi
+}
+
+# Source directory
+DOT="$(dirname "$(realpath "$0")")"
+cd "$DOT"
 
 # Hook mode
-[ -n "$GIT_DIR" ] && (copyfiles; exit)
+[ "$GIT_DIR" ] && all_mode=skip
 
-# Uninstall
-[ "$1" == "--remove" ] && (copyfiles remove; exit)
+# Run installation
+install_files
+[ "$GIT_DIR" ] || post_install
 
-# Check for git
-type git &>/dev/null || die "git not found"
-
-# One-liner install
-if [ "$0" == "sh" ]; then
-  DOTDIR="${1:-"$HOME/.dotfiles"}"
-  [ -e "$DOTDIR" ] && die "$DOTDIR already exists, use ´git pull´ to update"
-  git clone "$THIS_REPO" "$DOTDIR"
-fi
-
-# Install Vundle
-[ ! -e "$HOME/.vim/bundle/vundle" ] && \
-  git clone "$VUNDLE_REPO" "$HOME/.vim/bundle/vundle"
-
-# Copy files and set up post-merge hook (runs after ´git pull´)
-copyfiles
-ln -s "$DOTDIR/setup" "$DOTDIR/.git/hooks/post-merge" || true
