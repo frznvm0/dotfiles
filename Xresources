@@ -1,17 +1,31 @@
-Xcursor.theme: Vanilla-DMZ
+! Xcursor
+Xcursor.theme: Adwaita
 
-URxvt.font: xft:Inconsolata for Powerline:size=10
-URxvt.xftAntialias: true
+! Xft
+Xft.dpi: 96
+Xft.rgba: rgb
+Xft.antialias: true
+Xft.hinting: true
+Xft.hintstyle: hintslight
+
+! URxvt font
+URxvt.font: xft:Inconsolata for Powerline:size=10,xft:Meslo LG S for Powerline:size=8
+
+! URxvt perl extensions
+URxvt.perl-ext: default,url-select,selection-to-clipboard
+URxvt.keysym.M-f: perl:url-select:select_next
+URxvt.url-select.launcher: open
+
+! URxvt options
 URxvt.scrollBar: false
+URxvt.saveLines: 10000
 URxvt.transparent: true
-URxvt.shading: 30
+URxvt.shading: 25
+URxvt.internalBorder: 8
 URxvt.fading: 40
 URxvt.fadeColor: #002b36
 
-URxvt.perl-ext: default,url-select
-URxvt.keysym.M-f: perl:url-select:select_next
-URxvt.urlLauncher: open
-
+! URxvt colorscheme
 URxvt.background: #1d1f21
 URxvt.foreground: #c5c8c6
 URxvt.color0: #282a2e
