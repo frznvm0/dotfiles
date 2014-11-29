@@ -1,5 +1,3 @@
-source ~/.zshenv
-
 if [ "$(tty)" = "/dev/tty1" ]; then
   clear; exec xinit &> ~/.xlog
 fi
