@@ -4,35 +4,31 @@
 #
 # Executed by startx (run your window manager from here)
 
-# Configure external display
-xrandr --output VGA1 --mode 1024x768 --left-of LVDS1
-
 # X settings
-setxkbmap -option compose:caps
+setxkbmap hu
 xrdb -merge ~/.Xresources
-xmodmap ~/.Xmodmap
-xset +fp /usr/share/fonts/local
+xrandr --output VGA1 --mode 1024x768 --right-of LVDS1
+xset +fp ~/.fonts,/usr/share/fonts/OTF/
 xset fp rehash
-
-# Synch clipboard
-autocutsel -fork &
-autocutsel -selection PRIMARY -fork &
 
 # NumLock
 numlockx on
 
-# GTK env. variables
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export GTK_IM_MODULE=xim
+# Cursor
+xsetroot -cursor_name Adwaita
 
-# Statusbar & wallpaper
-~/bin/statusbar &
+# Wallpaper
 sh ~/.fehbg
 
-# URxvt
-urxvtd -q -o -f &
-(sleep 1s && urxvtc -e tmux new -As dev) &
+# Compositor
+compton -b &
 
-# Start WM
-exec dwm
+# Hotkeys
+sxhkd &
+
+# URxvt
+urxvtd -q -o -f
+
+# WM
+exec bspwm
 
