@@ -1,0 +1,8 @@
+#!/bin/zsh
+
+for code in {0..15}; do
+  hex="$(sed -r '/\.color'$code':/!d;s/.* (#.+)/\1/' ~/.Xresources)"
+  print -nP -- "%F{$code}█ $hex "
+  [[ $code -eq 7 ]] || [[ $code -eq 15 ]] && echo
+done
+
