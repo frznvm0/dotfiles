@@ -18,9 +18,7 @@ autoload colors && colors
 eval "$(dircolors)"
 
 # Set prompt
-export PS1="%(!.%F{red}.%F{cyan})%n%F{reset} at %F{green}%m%F{reset} in %F{yellow}%~%F{reset} %# "
+export PS1='%F{yellow}%~ ${vcs_info_msg_0_}%(!.%F{red}.%F{cyan})%#%f '
+export RPS1='%(0?..%F{red}%?%f)%(1j. %F{white}&%f.)'
+function precmd { vcs_info $(vcs_context) }
 
-# Refresh RPS1
-function precmd {
-  export RPS1="$(git_prompt) $(rbenv_prompt)"
-}
