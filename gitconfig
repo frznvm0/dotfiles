@@ -1,3 +1,5 @@
+[include]
+	path = ~/.user.gitconfig
 [core]
 	quotepath = false
 	editor = vim
