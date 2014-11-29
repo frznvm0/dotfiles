@@ -1,26 +1,30 @@
-function mcd() {
+# Make and change directory
+function mcd {
   mkdir -p "$1" && cd "$1"
 }
 
-function swap() {
-  holding=$(mktemp)
-  mv "$1" $holding
+# Swap to files
+function swap {
+  mv "$1"{,.swapping}
   mv "$2" "$1"
-  mv $holding "$2"
+  mv "$1".swapping "$2"
 }
 
-function git_prompt() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "on %{$fg[blue]%}${ref#refs/heads/}%{$reset_color%}$(git_dirty)"
+# Change to temporary directory
+function tcd {
+  cd "$(mktemp -d)"
 }
 
-function git_dirty() {
-  [ -n "$(git diff --cached 2>/dev/null)" ] && echo -n " %F{green}+"
-  [ -n "$(git diff 2>/dev/null)" ] && echo -n " %F{red}*"
-  echo "%{$reset_color%}"
+# Colorize man pages
+function man {
+  env \
+    LESS_TERMCAP_mb=$(printf "\e[38;5;146m") \
+    LESS_TERMCAP_md=$(printf "\e[38;5;3m")   \
+    LESS_TERMCAP_me=$(printf "\e[38;5;138m") \
+    LESS_TERMCAP_se=$(printf "\e[38;5;246m") \
+    LESS_TERMCAP_so=$(printf "\e[38;5;146m") \
+    LESS_TERMCAP_ue=$(printf "\e[38;5;246m") \
+    LESS_TERMCAP_us=$(printf "\e[38;5;174m") \
+    man "$@"
 }
 
-function rbenv_prompt() {
-  which rbenv &>/dev/null || return
-  echo "using %{$fg_bold[red]%}$(rbenv version | cut -d ' ' -f 1)%{$reset_color%}"
-}
