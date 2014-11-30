@@ -81,6 +81,19 @@ if executable("ag")
 endif
 
 " -------------------------------------
+" Leader key
+let mapleader = ","
+
+" Color
+set t_Co=256
+color hybrid
+
+" Airline
+let g:airline_theme = "badwolf"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" -------------------------------------
 " Help key to ESC
 map <F1> <ESC>
 nmap <F1> <ESC>
@@ -109,19 +122,6 @@ nmap <leader>q gqip
 " Jump to next brace
 nmap <Tab> %
 vmap <Tab> %
-
-" -------------------------------------
-" Leader key
-let mapleader = ","
-
-" Color
-set t_Co=256
-color hybrid
-
-" Airline
-let g:airline_theme = "badwolf"
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
 
 " -------------------------------------
 " Autocommands
