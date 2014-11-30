@@ -8,6 +8,17 @@ Xft.antialias: true
 Xft.hinting: true
 Xft.hintstyle: hintslight
 
+! ssh-askpass
+x11-ssh-askpass*background: #1d1f21
+x11-ssh-askpass*foreground: #c5c8c6
+x11-ssh-askpass.Button*background: #373b41
+x11-ssh-askpass.Indicator*background: #373b41
+x11-ssh-askpass.Indicator*foreground: #eab700
+x11-ssh-askpass*topShadowColor: #707880
+x11-ssh-askpass*bottomShadowColor: #707880
+x11-ssh-askpass*borderWidth: 1
+x11-ssh-askpass*shadowThickness: 1
+
 ! URxvt font
 URxvt.font: xft:Inconsolata for Powerline:size=10,xft:Meslo LG S for Powerline:size=8
 

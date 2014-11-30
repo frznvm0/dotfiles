@@ -16,8 +16,10 @@ bspc config gapless_monocle       true
 bspc config focus_follows_pointer true
 
 # Rules
-echo Chromium feh mpv |
-  xargs -I% bspc rule -a % floating=true
+bspc rule -a feh floating=true
+bspc rule -a mpv floating=true
+bspc rule -a Chromium floating=true
+bspc rule -a SshAskpass floating=true center=true follow=true
 
 # Panel
 ~/.config/bspwm/panel &

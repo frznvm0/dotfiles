@@ -29,6 +29,9 @@ sxhkd &
 # URxvt
 urxvtd -q -o -f
 
+# SSH keys
+SSH_AGENT=/usr/lib/ssh/x11-ssh-askpass ssh-add &
+
 # WM
 exec bspwm
 
