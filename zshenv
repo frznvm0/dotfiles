@@ -1,4 +1,4 @@
-PATH="$HOME/bin:/usr/bin/core_perl:$PATH"
+PATH="$HOME/bin:$PATH"
 NODE_PATH="/usr/local/lib/node_modules"
 EDITOR='vim'
 VISUAL='subl3 -w'
