@@ -1,27 +1,28 @@
+" -------------------------------------
+" Vundle
 set nocompatible
 filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'gmarik/Vundle.vim'
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+" Plugins
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'kchmck/vim-coffee-script'
+Plugin 'groenewege/vim-less'
+Plugin 'bling/vim-airline'
+Plugin 'edkolev/tmuxline.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'w0ng/vim-hybrid'
 
-" Bundles
-Bundle 'gmarik/vundle'
-Bundle 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim'}
-Bundle 'Shougo/neocomplcache'
-Bundle 'kien/ctrlp.vim'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rails'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'groenewege/vim-less'
-Bundle 'w0ng/vim-hybrid'
-
+" Vundle end
+call vundle#end()
 filetype plugin indent on
 syntax on
 
-" Leader
-let mapleader = ","
-
+" -------------------------------------
 " Basic options
 set encoding=utf-8
 set showcmd
@@ -34,11 +35,13 @@ set laststatus=2
 set noshowmode
 set scrolloff=999
 set omnifunc=syntaxcomplete#Complete
+set splitright
+set fcs=vert:│,fold:-
+
+" Saving
 set autowrite
 set nobackup
 set directory=/tmp
-set splitright
-set fcs=vert:│,fold:-
 
 " Tabs
 set autoindent
@@ -56,13 +59,11 @@ set colorcolumn=80
 
 " Invisible characters
 set listchars=tab:▸\ ,eol:¬,trail:·
-map <leader>l :set list!<CR>
 
 " Searching
 set ignorecase
 set smartcase
 set hlsearch
-nmap <leader><space> :noh<CR>
 
 " Cmdline completion
 set wildmenu
@@ -74,16 +75,12 @@ set foldignore=
 set foldlevelstart=99
 set foldmethod=marker
 
-" Color scheme
-set t_Co=256
-let g:hybrid_use_Xresources = 1
-colorscheme hybrid
+" Use Ag (https://github.com/ggreer/the_silver_searcher) instead of Grep
+if executable("ag")
+  set grepprg=ag\ --nogroup\ --nocolor
+endif
 
-" Clipboard
-map <leader>y "*y
-map <leader>yy "*Y
-map <leader>p :set paste<CR>:put *<CR>:set nopaste<CR>
-
+" -------------------------------------
 " Help key to ESC
 map <F1> <ESC>
 nmap <F1> <ESC>
@@ -97,48 +94,49 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-c> <C-w>c
 
-" Misc keybindings
+" Toggle invisible chars
+map <leader>l :set list!<CR>
+
+" Clear search highlight
+nmap <leader><space> :noh<CR>
+
+" Select up to last insertion
 nmap <leader>v V`]
+
+" Format paragraph
 nmap <leader>q gqip
+
+" Jump to next brace
 nmap <Tab> %
 vmap <Tab> %
 
-" Multifunctional Tab key
-function! InsertTabWrapper()
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1] !~ '\k'
-        return "\<tab>"
-    else
-        return "\<c-n>"
-    endif
-endfunction
-inoremap <Tab> <c-r>=InsertTabWrapper()<cr>
+" -------------------------------------
+" Leader key
+let mapleader = ","
 
-" Use Ag (https://github.com/ggreer/the_silver_searcher) instead of Grep
-if executable("ag")
-  set grepprg=ag\ --nogroup\ --nocolor
-endif
+" Color
+set t_Co=256
+color hybrid
 
+" Airline
+let g:airline_theme = "badwolf"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" -------------------------------------
 " Autocommands
 if has("autocmd")
-
-  au BufWritePost .vimrc source $MYVIMRC
+  " Write if focus lost
   au FocusLost * :wa
 
-  au BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
-
-  au BufRead,BufNewFile {Gemfile,Rakefile,Guardfile,*.ru} set ft=ruby
+  " Handle markdown extensions
   au BufRead,BufNewFile *.{md,mkd,mdown,markdown} set ft=markdown
-  au FileType make,c setlocal noet sts=0 sw=8
-  au FileType python,markdown setlocal sts=4 sw=4
-  au FileType markdown setlocal fo+=an fo-=t spell textwidth=80
 
+  " Proper indentation
+  au FileType make,c setl noet sts=0 sw=8
+  au FileType python,markdown setl sts=4 sw=4
+
+  " Markdown text formatting
+  au FileType markdown setl fo+=an fo-=t spell textwidth=80
 endif
-
-" Plugin settings
-let g:neocomplcache_enable_at_startup = 1
-let g:neocomplcache_enable_smart_case = 1
 
