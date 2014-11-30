@@ -40,8 +40,7 @@ case "$opt" in
     $aura -Ms "$2"
     ;;
   *) # Update or call $aura
-    [ -z "$1" ] && (sudo -E $aura -Syu; sudo -E $aura -Akux; exit)
-    $aura "$@"
+    [ -z "$1" ] && (sudo -E $aura -Syu; sudo -E $aura -Akux) || $aura "$@"
     ;;
 esac
 
