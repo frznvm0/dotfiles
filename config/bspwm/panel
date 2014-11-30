@@ -147,7 +147,7 @@ while read -r line; do
   esac
 
   for tags in "${monitors[@]}"; do
-    cmd="bsp desktop focused -l next"
+    cmd="bspc desktop focused -l next"
     toggler="%{B$dkblu}%{R}%{A:$cmd:} $layout %{A}%{R}"
     echo -en "%{l}$toggler $left  $netstat %{B-}%{c}$tags %{r}$right%{S+}"
   done
