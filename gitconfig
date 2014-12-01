@@ -4,19 +4,17 @@
 	quotepath = false
 	editor = vim
 	autocrlf = input
-[alias]
-	co = checkout
-	st = status -sb
-	l = log --oneline --decorate --graph
-	unstage = reset HEAD --
-	# echo is needed because git appends arguments to the main command
-	open = !open https://github.com/$(git remote -v |\
-		sed -r 's/.*\\.com(:|\\/)(\\w+\\/\\w+).*/\\2/' | head -1)/$1 |\
-		echo &>/dev/null
+[push]
+	default = simple
 [color]
 	diff = auto
 	status = auto
 	branch = auto
 	ui = always
-[push]
-	default = simple
+[alias]
+	co = checkout
+	st = status -sb
+	l = log --oneline --decorate --graph
+	unstage = reset HEAD --
+        amend = commit --amend -C HEAD
+        undo = reset --soft HEAD^
