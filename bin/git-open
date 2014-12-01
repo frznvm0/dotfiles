@@ -8,7 +8,7 @@ origin=$(git config remote.origin.url)
 repo=$(sed -r 's_.*com(:|/)([a-zA-Z0-9/-]+)\.git$_\2_' <<< $origin)
 
 # Path suffix, so you can do `git open pulls 132 commits` -> pulls/132/commits
-[ "$1" ] && path=$(tr ' ' / <<< "$*")
+[ "$1" ] && path=/$(tr ' ' / <<< "$*")
 
 open https://github.com/$repo$path
 
