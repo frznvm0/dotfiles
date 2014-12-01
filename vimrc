@@ -94,19 +94,6 @@ let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " -------------------------------------
-" Help key to ESC
-map <F1> <ESC>
-nmap <F1> <ESC>
-imap <F1> <ESC>
-vmap <F1> <ESC>
-
-" Window movement
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-nmap <C-c> <C-w>c
-
 " Toggle invisible chars
 map <leader>l :set list!<CR>
 
@@ -119,9 +106,32 @@ nmap <leader>v V`]
 " Format paragraph
 nmap <leader>q gqip
 
+" Y consistent with C and D
+map Y y$
+
+" Better indentation
+vmap > >gv
+vmap < <gv
+
 " Jump to next brace
 nmap <Tab> %
 vmap <Tab> %
+
+" Window movement
+nmap <C-h> <C-w>h
+nmap <C-j> <C-w>j
+nmap <C-k> <C-w>k
+nmap <C-l> <C-w>l
+nmap <C-c> <C-w>c
+
+" Buffers
+nmap <C-tab> :bnext<CR>
+
+" Help key to ESC
+map <F1> <ESC>
+nmap <F1> <ESC>
+imap <F1> <ESC>
+vmap <F1> <ESC>
 
 " -------------------------------------
 " Autocommands
