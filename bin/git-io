@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Shorten links with git.io.
+set -e
+
+[ "$1" ] || (echo "Usage: git io <url>"; exit 1)
+
+curl -i git.io -F url="$1" 2>/dev/null | sed -rn 's/Location: (.+)/\1/p' | 
+  tee /dev/stderr | xsel -bi
+
