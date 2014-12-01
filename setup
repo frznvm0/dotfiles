@@ -74,7 +74,7 @@ post_install(){
   # Set up hook
   hook="$DOT/.git/hooks/post-merge"
   if [ \! -e "$hook" ] && ask "Set up git post-merge hook? [y/N] " y; then
-    echo ln -s "$(realpath "$0")" "$hook" &&
+    ln -s "$(realpath "$0")" "$hook" &&
       msg "linked $0 to .git/hooks/post-merge" || err "cannot link $0"
   fi
 
