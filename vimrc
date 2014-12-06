@@ -106,6 +106,12 @@ nmap <leader>v V`]
 " Format paragraph
 nmap <leader>q gqip
 
+" Source vimrc
+nmap <leader>u :source ~/.vimrc<CR>
+
+" Save file as root
+cmap w!! %!sudo tee > /dev/null %
+
 " Y consistent with C and D
 map Y y$
 
