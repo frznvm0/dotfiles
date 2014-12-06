@@ -109,6 +109,9 @@ nmap <leader>q gqip
 " Source vimrc
 nmap <leader>u :source ~/.vimrc<CR>
 
+" Source selection
+vmap <leader>S y:execute @@<CR>:echo 'Sourced selection'<CR>
+
 " Save file as root
 cmap w!! %!sudo tee > /dev/null %
 
