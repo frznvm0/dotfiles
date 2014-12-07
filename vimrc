@@ -16,6 +16,7 @@ Plugin 'edkolev/tmuxline.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'w0ng/vim-hybrid'
+Plugin 'scrooloose/syntastic'
 
 " Vundle end
 call vundle#end()
