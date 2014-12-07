@@ -25,19 +25,16 @@ syntax on
 
 " -------------------------------------
 " Basic options
-set encoding=utf-8
-set showcmd
 set hidden
 set number
-set ruler
-set vb t_vb=
+set visualbell
 set backspace=indent,eol,start
 set laststatus=2
-set noshowmode
 set scrolloff=999
-set omnifunc=syntaxcomplete#Complete
+
+" Splits
 set splitright
-set fcs=vert:│,fold:-
+set fillchars=vert:│,fold:―
 
 " Saving
 set autowrite
