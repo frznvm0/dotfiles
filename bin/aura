@@ -40,7 +40,11 @@ case "$opt" in
     $aura -Ms "$2"
     ;;
   *) # Update or call $aura
-    [ -z "$1" ] && (sudo -E $aura -Syu; sudo -E $aura -Akux) || $aura "$@"
+    if [ -z "$1" ]; then
+      sudo -E -- sh -c "$aura -Syu; $aura -Auk"
+    else
+      $aura "$@"
+    fi
     ;;
 esac
 
