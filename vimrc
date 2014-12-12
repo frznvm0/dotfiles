@@ -69,6 +69,9 @@ set wildmenu
 set wildmode=list:longest,list:full
 set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc
 
+" Omnifunc for YouCompleteMe
+set omnifunc=syntaxcomplete#Complete
+
 " Folding
 set foldignore=
 set foldlevelstart=99
