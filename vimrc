@@ -97,10 +97,10 @@ let g:airline#extensions#tabline#enabled = 1
 
 " -------------------------------------
 " Toggle invisible chars
-map <leader>l :set list!<CR>
+map <silent> <leader>l :set list!<CR>
 
 " Clear search highlight
-nmap <leader><space> :noh<CR>
+nmap <silent> <leader><space> :noh<CR>
 
 " Select up to last insertion
 nmap <leader>v V`]
@@ -109,7 +109,7 @@ nmap <leader>v V`]
 nmap <leader>q gqip
 
 " Source vimrc
-nmap <leader>u :source ~/.vimrc<CR>
+nmap <leader>u :source ~/.vimrc<CR>:echo 'Sourced vimrc'<CR>
 
 " Source selection
 vmap <leader>S y:execute @@<CR>:echo 'Sourced selection'<CR>
@@ -135,14 +135,9 @@ nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-c> <C-w>c
 
-" Buffers
-nmap <C-tab> :bnext<CR>
-
 " Help key to ESC
 map <F1> <ESC>
-nmap <F1> <ESC>
 imap <F1> <ESC>
-vmap <F1> <ESC>
 
 " -------------------------------------
 " Autocommands
