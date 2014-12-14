@@ -18,6 +18,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'w0ng/vim-hybrid'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'SirVer/ultisnips'
 
 " Vundle end
 call vundle#end()
@@ -94,6 +95,11 @@ color hybrid
 let g:airline_theme = "badwolf"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger = "<C-tab>"
+let g:UltiSnipsJumpForwardTrigger = "<C-tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-q>"
 
 " -------------------------------------
 " Toggle invisible chars
