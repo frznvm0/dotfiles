@@ -19,6 +19,7 @@ Plugin 'w0ng/vim-hybrid'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
+Plugin 'tommcdo/vim-exchange'
 
 " Vundle end
 call vundle#end()
