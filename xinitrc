@@ -4,24 +4,26 @@
 #
 # Executed by startx (run your window manager from here)
 
-# X settings
-setxkbmap hu
-xrdb -merge ~/.Xresources
-xrandr --output VGA1 --mode 1024x768 --right-of LVDS1
-xset +fp ~/.fonts,/usr/share/fonts/OTF/
+# Resources
+xrdb ~/.Xresources
+xsetroot -cursor_name left_ptr
+
+# Fonts
+xset +fp ~/.fonts
 xset fp rehash
 
-# NumLock
+# Keyboard
+setxkbmap hu
 numlockx on
 
-# Cursor
-xsetroot -cursor_name Adwaita
+# Monitors
+xrandr --output VGA1 --mode 1024x768 --right-of LVDS1
 
 # Wallpaper
 sh ~/.fehbg
 
 # Compositor
-compton -b &
+compton -b
 
 # Hotkeys
 sxhkd &
