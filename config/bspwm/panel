@@ -4,7 +4,7 @@
 
 barbg='#003f3e3b'
 barfg='#ffd4d5d0'
-barfont='-benis-lemon-medium-r-normal--10-*-*-*-m-*-*-*'
+barfont='-benis-lemon-medium-r-normal--10-*-*-*-*-*-*-*'
 
 dkblu='#ff142936'
 
@@ -55,7 +55,7 @@ battery(){
 # CPU usage
 cpu(){
   local used=$(dstat --cpu24 1 1 | awk 'NR==4 {print 100 - $3}')
-  echo -e "%{F#ffdd9c3c}\u2ba7 $used%%%{F-}"
+  echo -e "%{F#ffdd9c3c}\u2ba6 $used%%%{F-}"
 }
 
 # Free memory
@@ -65,7 +65,8 @@ mem(){
 
 # Clock
 clock(){
-  date +%Y-%m-%d\ %H:%M:%S
+  echo -en "\u2b96 "
+  date +"%H:%M / %Y-%m-%d"
 }
 
 # Remove B,k,M suffixes
@@ -93,7 +94,7 @@ mkfifo "$FIFO"
 
 bspc control --subscribe > "$FIFO" &
 
-dstat -n 1 | 
+dstat -n 1 |
   sed -ur '1,2d;s/^\s+([0-9BkM]+)\s+([0-9BkM]+)/N\1 \2/' > "$FIFO" &
 
 while true; do
@@ -137,8 +138,8 @@ while read -r line; do
           o*) monitors[$mon]+="$tag○%{F-}%{A} " ;;
           f*) monitors[$mon]+="$tag%{F$dkblu}○%{F-}%{A} " ;;
           L*)
-            [ ${item:1} == tiled ] && 
-              layout="\u2b99" || 
+            [ ${item:1} == tiled ] &&
+              layout="\u2b99" ||
               layout="\u25a0"
             ;;
         esac
