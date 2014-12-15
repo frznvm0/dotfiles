@@ -109,12 +109,6 @@ map <silent> <leader>l :set list!<CR>
 " Clear search highlight
 nmap <silent> <leader><space> :noh<CR>
 
-" Select up to last insertion
-nmap <leader>v V`]
-
-" Format paragraph
-nmap <leader>q gqip
-
 " Source vimrc
 nmap <leader>u :source ~/.vimrc<CR>:echo 'Sourced vimrc'<CR>
 
@@ -130,10 +124,6 @@ map Y y$
 " Better indentation
 vmap > >gv
 vmap < <gv
-
-" Jump to next brace
-nmap <Tab> %
-vmap <Tab> %
 
 " Window movement
 nmap <C-h> <C-w>h
