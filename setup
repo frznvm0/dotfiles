@@ -79,9 +79,10 @@ post_install(){
   fi
 
   # Install Vundle
-  if ask "Install Vundle.vim? [y/N] " y; then
+  vundle="$HOME/.vim/bundle/Vundle.vim"
+  if [ \! -e "$vundle" ] && ask "Install Vundle.vim? [y/N] " y; then
     git clone https://github.com/gmarik/Vundle.vim.git \
-      "$HOME/.vim/bundle/Vundle.vim"
+      "$vundle"
     vim +VundleInstall +qall
   fi
 }
