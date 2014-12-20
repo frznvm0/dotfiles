@@ -1,7 +1,6 @@
 [include]
 	path = ~/.user.gitconfig
 [core]
-	quotepath = false
 	editor = vim
 	autocrlf = input
 [push]
@@ -11,6 +10,10 @@
 	status = auto
 	branch = auto
 	ui = always
+[pull]
+	rebase = true
+[grep]
+	lineNumber = true
 [alias]
 	co = checkout
 	st = status -sb
