@@ -45,9 +45,9 @@ link_file(){
       msg "skipping $dst"
       return
     elif [ "$all_mode" == overwr -o "$mode" == o ]; then
-      rm -rf "$2" || err "cannot remove $dst"
+      if ! rm -rf "$2"; then err "cannot remove $dst"; return; fi
     elif [ "$all_mode" == backup -o "$mode" == b ]; then
-      mv "$2" "${2}.backup" || err "cannot move $dst"
+      if ! mv "$2" "${2}.backup"; then err "cannot move $dst"; return; fi
     fi
   fi
 
