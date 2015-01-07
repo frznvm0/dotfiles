@@ -30,14 +30,10 @@ URxvt.url-select.launcher: open
 ! URxvt options
 URxvt.scrollBar: false
 URxvt.saveLines: 10000
-URxvt.transparent: true
-URxvt.shading: 25
 URxvt.internalBorder: 8
-URxvt.fading: 40
-URxvt.fadeColor: #002b36
 
 ! URxvt colorscheme
-URxvt.background: #1d1f21
+URxvt.background: #1a1919
 URxvt.foreground: #c5c8c6
 URxvt.color0: #282a2e
 URxvt.color8: #373b41
