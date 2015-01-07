@@ -3,7 +3,6 @@
 #
 
 super + shift + q
-	pkill -x panel; \
 	bspc quit
 
 super + w
@@ -15,8 +14,8 @@ super + t
 super + b
 	bspc desktop -B
 
-super + {s,f}
-	bspc window -t {floating,fullscreen}
+super + {s,f,p}
+	bspc window -t {floating,fullscreen,pseudo_tiled}
 
 super + {grave,Tab}
 	bspc {window,desktop} -f last
@@ -87,14 +86,11 @@ super + Return
 super + r
 	dmenu_run -nb '#3f3e3b' -nf '#d4d5d0' -sb '#606060'
 
-XF86AudioRaiseVolume
-	amixer -M set Master 5%+
 
-XF86AudioLowerVolume
-	amixer -M set Master 5%-
+XF86Audio{Raise,Lower}Volume
+	amixer -M set Master 5%{+,-}
 
 # make sxhkd reload its configuration files:
 super + Escape
-	pkill -USR1 -x sxhkd; \
-	pkill -USR1 -x panel
+	pkill -USR1 -x sxhkd
 
