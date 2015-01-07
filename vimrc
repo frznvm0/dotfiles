@@ -32,8 +32,9 @@ set hidden
 set number
 set visualbell
 set backspace=indent,eol,start
-set laststatus=2
 set scrolloff=999
+set laststatus=2
+set noshowmode
 
 " Splits
 set splitright
