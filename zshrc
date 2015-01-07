@@ -21,6 +21,6 @@ zle_highlight=(isearch:fg=12)
 
 # Set prompt
 export PS1='%F{yellow}%~ ${vcs_info_msg_0_}%(!.%F{red}.%F{cyan})%#%f '
-export RPS1='%(0?..%F{red}%?%f)%(1j. %F{white}&%f.)'
+export RPS1='%(0?..%F{red}%?%f)%(1j. %F{white}%j%f.)'
 function precmd { vcs_info $(vcs_context) }
 
