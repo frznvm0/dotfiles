@@ -1,5 +1,4 @@
-" -------------------------------------
-" Vundle
+" Vundle "{{{
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -26,8 +25,8 @@ call vundle#end()
 filetype plugin indent on
 syntax on
 
-" -------------------------------------
-" Basic options
+"}}}
+" Basic options "{{{
 set hidden
 set number
 set visualbell
@@ -85,8 +84,8 @@ if executable("ag")
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-" -------------------------------------
-" Leader key
+"}}}
+" Leader key "{{{
 let mapleader = ","
 
 " Color
@@ -103,8 +102,8 @@ let g:UltiSnipsExpandTrigger = "<C-tab>"
 let g:UltiSnipsJumpForwardTrigger = "<C-tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-q>"
 
-" -------------------------------------
-" Toggle invisible chars
+"}}}
+" Toggle invisible chars "{{{
 map <silent> <leader>l :set list!<CR>
 
 " Clear search highlight
@@ -137,8 +136,8 @@ nmap <C-c> <C-w>c
 map <F1> <ESC>
 imap <F1> <ESC>
 
-" -------------------------------------
-" Autocommands
+"}}}
+" Autocommands "{{{
 if has("autocmd")
   " Write if focus lost
   au FocusLost * :wa
@@ -154,3 +153,4 @@ if has("autocmd")
   au FileType markdown setl fo+=an fo-=t spell textwidth=80
 endif
 
+"}}}
