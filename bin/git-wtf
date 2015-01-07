@@ -1,0 +1,4 @@
+#!/bin/sh
+#
+# Get a commit message from whatthecommit.com
+exec curl whatthecommit.com/index.txt 2>/dev/null
