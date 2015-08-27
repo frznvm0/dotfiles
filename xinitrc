@@ -13,7 +13,7 @@ xset +fp ~/.fonts
 xset fp rehash
 
 # Keyboard
-setxkbmap hu
+setxkbmap hu -option caps:escape
 numlockx on
 
 # Monitors
