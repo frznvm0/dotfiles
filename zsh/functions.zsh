@@ -20,13 +20,19 @@ function tcd {
 # Colorize man pages
 function man {
   env \
-    LESS_TERMCAP_mb=$(printf "\e[38;5;146m") \
-    LESS_TERMCAP_md=$(printf "\e[38;5;3m")   \
-    LESS_TERMCAP_me=$(printf "\e[38;5;138m") \
-    LESS_TERMCAP_se=$(printf "\e[38;5;246m") \
-    LESS_TERMCAP_so=$(printf "\e[38;5;146m") \
-    LESS_TERMCAP_ue=$(printf "\e[38;5;246m") \
-    LESS_TERMCAP_us=$(printf "\e[38;5;174m") \
+    LESS_TERMCAP_mb=$(tput bold; tput setaf 2) \
+    LESS_TERMCAP_md=$(tput bold; tput setaf 6) \
+    LESS_TERMCAP_me=$(tput sgr0) \
+    LESS_TERMCAP_se=$(tput rmso; tput sgr0) \
+    LESS_TERMCAP_so=$(tput bold; tput setaf 3; tput setab 4) \
+    LESS_TERMCAP_us=$(tput smul; tput bold; tput setaf 7) \
+    LESS_TERMCAP_ue=$(tput rmul; tput sgr0) \
+    LESS_TERMCAP_mr=$(tput rev) \
+    LESS_TERMCAP_mh=$(tput dim) \
+    LESS_TERMCAP_ZN=$(tput ssubm) \
+    LESS_TERMCAP_ZV=$(tput rsubm) \
+    LESS_TERMCAP_ZO=$(tput ssupm) \
+    LESS_TERMCAP_ZW=$(tput rsupm) \
     man "$@"
 }
 
