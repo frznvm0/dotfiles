@@ -2,6 +2,7 @@
 function mcd {
   mkdir -p "$1" && cd "$1"
 }
+compdef _mkdir mcd
 
 # Swap to files
 function swap {
@@ -9,6 +10,7 @@ function swap {
   mv "$2" "$1"
   mv "$1".swapping "$2"
 }
+compdef _mv swap
 
 # Change to temporary directory
 function tcd {
