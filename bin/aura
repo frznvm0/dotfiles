@@ -2,9 +2,9 @@
 
 aura="/usr/bin/aura"
 
-getopts :RSUABCMOFG opt
+getopts :DRSUABCMOFG opt
 case "$opt" in
-  R|U|B) sudo -E $aura "$@" ;;
+  D|R|U|B) sudo -E $aura "$@" ;;
   O) # Orphans
     getopts :j opt
     $([ "$opt" == j -o -n "$2" ] && echo sudo -E) $aura "$@"
