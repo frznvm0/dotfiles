@@ -20,7 +20,7 @@ x11-ssh-askpass*borderWidth: 1
 x11-ssh-askpass*shadowThickness: 1
 
 ! URxvt font
-URxvt.font: xft:Inconsolata for Powerline:size=10,xft:Meslo LG S for Powerline:size=8
+URxvt.font: xft:Inconsolata for Powerline:size=9,xft:Meslo LG S for Powerline:size=7
 
 ! URxvt perl extensions
 URxvt.perl-ext: default,url-select,selection-to-clipboard
