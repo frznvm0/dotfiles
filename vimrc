@@ -9,7 +9,6 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'groenewege/vim-less'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'airblade/vim-gitgutter'
@@ -24,6 +23,7 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'kien/rainbow_parentheses.vim'
 Plugin 'kovisoft/paredit'
+Plugin 'wavded/vim-stylus'
 
 " Vundle end
 call vundle#end()
@@ -153,6 +153,7 @@ if has("autocmd")
 
   " Detect extensions
   au BufNewFile,BufReadPost *.md set filetype=markdown
+  au BufNewFile,BufReadPost *.styl set filetype=stylus
 
   " Proper indentation
   au FileType make,c,gitconfig setl noexpandtab
