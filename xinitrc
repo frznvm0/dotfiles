@@ -16,9 +16,6 @@ xset fp rehash
 setxkbmap hu -option caps:escape
 numlockx on
 
-# Monitors
-xrandr --output VGA1 --mode 1024x768 --right-of LVDS1
-
 # Wallpaper
 sh ~/.fehbg
 
