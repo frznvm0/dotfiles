@@ -64,6 +64,7 @@ let &showbreak = '↪ '
 set ignorecase
 set smartcase
 set hlsearch
+set incsearch
 
 " Cmdline completion
 set wildmenu
