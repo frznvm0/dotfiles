@@ -47,13 +47,13 @@ set directory=/tmp
 set autoindent
 set expandtab
 set smarttab
-set tabstop=8
+set tabstop=4
 set softtabstop=2
 set shiftwidth=2
 
 " Text format
 set linebreak
-set formatoptions=cqrj
+set formatoptions=cqj
 set colorcolumn=80
 
 " Invisible characters
@@ -146,11 +146,11 @@ if has("autocmd")
   au BufNewFile,BufReadPost *.md set filetype=markdown
 
   " Proper indentation
-  au FileType make,c setl noet sts=0 sw=8
-  au FileType python,markdown setl sts=4 sw=4
+  au FileType make,c,gitconfig setl noexpandtab
+  au FileType python,markdown setl softtabstop=4 shiftwidth=4
 
   " Markdown text formatting
-  au FileType markdown setl fo+=an fo-=t spell textwidth=80
+  au FileType markdown setl formatoptions+=tan spell textwidth=80
 endif
 
 "}}}
