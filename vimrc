@@ -155,6 +155,9 @@ if has("autocmd")
 
   " Markdown text formatting
   au FileType markdown setl formatoptions+=tan spell textwidth=80
+
+  " Literate coffeescript
+  au FileType litcoffee runtime ftplugin/coffee.vim
 endif
 
 "}}}
