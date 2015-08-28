@@ -33,6 +33,7 @@ set backspace=indent,eol,start
 set scrolloff=999
 set laststatus=2
 set noshowmode
+set showcmd
 
 " Splits
 set splitright
@@ -40,7 +41,6 @@ set fillchars=vert:│,fold:―
 
 " Saving
 set autowrite
-set nobackup
 set directory=/tmp
 
 " Tabs
@@ -51,8 +51,7 @@ set tabstop=8
 set softtabstop=2
 set shiftwidth=2
 
-" Wrapping
-set wrap
+" Text format
 set linebreak
 set formatoptions=cqrj
 set colorcolumn=80
@@ -74,7 +73,6 @@ set wildignore+=*.o,*.obj,.git,*.rbc,*.pyc
 set omnifunc=syntaxcomplete#Complete
 
 " Folding
-set foldignore=
 set foldlevelstart=99
 set foldmethod=marker
 
