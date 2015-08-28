@@ -19,6 +19,9 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'honza/vim-snippets'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-unimpaired'
 
 " Vundle end
 call vundle#end()
