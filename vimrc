@@ -37,7 +37,7 @@ set showcmd
 
 " Splits
 set splitright
-set fillchars=vert:│,fold:―
+set fillchars+=vert:│
 
 " Saving
 set autowrite
@@ -58,6 +58,7 @@ set colorcolumn=80
 
 " Invisible characters
 set listchars=tab:▸\ ,eol:¬,trail:·
+let &showbreak = '↪ '
 
 " Searching
 set ignorecase
