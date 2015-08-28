@@ -111,11 +111,8 @@ nmap <silent> <leader><space> :noh<CR>
 " Source vimrc
 nmap <leader>u :source ~/.vimrc<CR>:echo 'Sourced vimrc'<CR>
 
-" Source selection
-vmap <leader>S y:execute @@<CR>:echo 'Sourced selection'<CR>
-
-" Save file as root
-cmap w!! %!sudo tee > /dev/null %
+" %% expands to directory of current file
+cmap %% <C-r>=expand('%:h').'/'<CR>
 
 " Y consistent with C and D
 map Y y$
