@@ -18,6 +18,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'tommcdo/vim-exchange'
+Plugin 'honza/vim-snippets'
 
 " Vundle end
 call vundle#end()
@@ -96,11 +97,6 @@ let g:airline_theme = "badwolf"
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
-" UltiSnips
-let g:UltiSnipsExpandTrigger = "<C-tab>"
-let g:UltiSnipsJumpForwardTrigger = "<C-tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-q>"
-
 "}}}
 " Toggle invisible chars "{{{
 map <silent> <leader>l :set list!<CR>
@@ -127,6 +123,11 @@ nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
 nmap <C-c> <C-w>c
+
+" UltiSnips
+imap <C-e> <silent> <C-o>:call UltiSnips#ExpandSnippet()
+imap <C-n> <silent> <C-o>:call UltiSnips#JumpForwards()
+imap <C-p> <silent> <C-o>:call UltiSnips#JumpBackwards()
 
 " Help key to ESC
 map <F1> <ESC>
