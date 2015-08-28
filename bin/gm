@@ -1,0 +1,71 @@
+#!/bin/sh
+#
+# Group Manager
+set -e
+
+# default group
+def=0
+
+# manage the active group list
+lsg(){
+  local gl="$(xprop -root _GM | cut -d\" -f2 -s)"
+  local update="xprop -root -f _GM 8s -set _GM"
+
+  case "$1" in
+    +*) $update "$gl${1/+/}" ;;
+    -*) $update "${gl/${1/-/}/}" ;;
+    "") echo $gl ;;
+    *) $update "$1" ;;
+  esac
+}
+
+# print a window's group
+pwg(){
+  local gid="$(xprop -id $1 _GM | cut -d' ' -f3)"
+  [ $gid == not ] && echo $def || echo $gid
+}
+
+# set group for a window
+setg(){
+  xprop -id $1 -f _GM 8c -set _GM $2
+  [ $def == $2 ] ||
+    lsg | grep -q $2 && mapw -m $1 || mapw -u $1
+}
+
+# (un)map a single group
+mapg(){
+  local mode
+  for wid in $(lsw -a); do
+    [ "$(pwg $wid)" == $2 ] || continue
+    mapw $1 $wid
+    wattr m $wid && mode='+' || mode='-'
+  done
+  [ $mode ] && lsg $mode$2
+}
+
+# unmap all groups but $1
+only(){
+  for wid in $(lsw -a); do
+    local gid="$(pwg $wid)"
+    [ $gid == $def ] && continue
+    [ $gid == $1 ] && mapw -m $wid || mapw -u $wid
+  done
+  lsg "$1"
+}
+
+# print usage
+usage(){
+  echo "usage: gm [-h] [-G <wid>] [-mtuo] <group>" >&2
+  exit 1
+}
+
+[ -z "$2" ] && usage
+
+case "$1" in
+  -G) setg $2 ${3:-$def} ;;
+  -m) mapg -m $2 ;;
+  -t) mapg -t $2 ;;
+  -u) mapg -u $2 ;;
+  -o) only $2 ;;
+  -h|*) usage ;;
+esac

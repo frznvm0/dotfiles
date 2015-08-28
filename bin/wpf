@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# focus window via pointer
+set -e
+
+[ -z "$1" ] && echo "usage: wpf <wid>" >&2 && exit 1
+
+# window
+read b x y w h <<< "$(wattr bxywh $1 2>/dev/null)"
+[ -z "$b" ] && echo "wpf: $1: no such window" >&2 && exit 1
+
+# focus
+chwso -r $1
+wtf $1
+
+# center pointer
+wmp -a $x $y
+wmp -r $((w/2 + b)) $((h/2 + b))

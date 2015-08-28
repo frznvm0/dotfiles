@@ -1,0 +1,33 @@
+#!/bin/sh
+#
+# cycle window focus
+set -e
+
+[ -z "$1" ] && echo "usage: wcf <direction>" >&2 && exit 1
+
+wid=$(pfw)
+
+lsw | case $1 in
+  next)
+    sed -ne '1h;$G;$s/0x//' -e /$wid/,+1h -e 'g;$P'
+    ;;
+  prev)
+    tac | sed -ne '1h;$G;$s/0x//' -e /$wid/,+1h -e 'g;$P'
+    ;;
+  north|up)
+    xargs wattr yi | sort -nr | sed -ne /$wid/,+1h -e 'g;$s/.* //p'
+    ;;
+  east|right)
+    xargs wattr xi | sort -n | sed -ne /$wid/,+1h -e 'g;$s/.* //p'
+    ;;
+  south|down)
+    xargs wattr yi | sort -n | sed -ne /$wid/,+1h -e 'g;$s/.* //p'
+    ;;
+  west|left)
+    xargs wattr xi | sort -nr | sed -ne /$wid/,+1h -e 'g;$s/.* //p'
+    ;;
+  *)
+    echo "usage: wcf <direction>" >&2
+    exit 1
+    ;;
+esac | { read wid || wid=$(lsw); wpf $wid; }

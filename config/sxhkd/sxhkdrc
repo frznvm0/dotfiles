@@ -17,7 +17,8 @@ super + shift + q
 
 # move/resize
 super + {_,shift} + {h,j,k,l}
-  {wmv,wrs} {-20 0,0 +20,0 -20,+20 0} $(pfw)
+  {wmv,wrs} {-20 0,0 +20,0 -20,+20 0} $(pfw) && \
+  wpf $(pfw)
 
 # close
 super + q
@@ -25,10 +26,22 @@ super + q
 
 # move in stack
 super + s
-  chwso -i $(pfw)
+  chwso -i $(pfw) && \
+  wpf $(pfw)
+
+# groups
+{alt, super, super + shift} + {0,1,2,3,4,5}
+  gm {-o,-t,-G $(pfw)} {0,1,2,3,4,5}
+
+# cycle trough windows
+alt + {_,shift} + Tab
+  wcf {next,prev}
+
+# focus closest
+alt + {h,j,k,l}
+  wcf {west,south,north,east}
 
 # move with mouse
 super + !button{1,3}
   {wmv,wrs} -a %i %i $(pfw)
-
 
