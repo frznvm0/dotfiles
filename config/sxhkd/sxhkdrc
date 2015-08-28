@@ -3,6 +3,12 @@
 super + Return
   urxvtc
 
+super + space
+  dmenu_run
+
+Menu
+  slock
+
 XF86Audio{Raise,Lower}Volume
   amixer -M set Master 5%{+,-}
 
