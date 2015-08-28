@@ -35,5 +35,5 @@ urxvtd -q -o -f
 SSH_ASKPASS=/usr/lib/ssh/x11-ssh-askpass ssh-add &
 
 # WM
-exec bspwm
+exec swm
 
