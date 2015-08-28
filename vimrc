@@ -22,6 +22,8 @@ Plugin 'honza/vim-snippets'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-unimpaired'
+Plugin 'kien/rainbow_parentheses.vim'
+Plugin 'kovisoft/paredit'
 
 " Vundle end
 call vundle#end()
@@ -161,6 +163,12 @@ if has("autocmd")
 
   " Literate coffeescript
   au FileType litcoffee runtime ftplugin/coffee.vim
+
+  " Rainbow parens
+  au VimEnter * RainbowParenthesesToggle
+  au Syntax * RainbowParenthesesLoadRound
+  au Syntax * RainbowParenthesesLoadSquare
+  au Syntax * RainbowParenthesesLoadBraces
 endif
 
 "}}}
