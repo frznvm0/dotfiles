@@ -138,8 +138,12 @@ if has("autocmd")
   " Write if focus lost
   au FocusLost * :wa
 
-  " Handle markdown extensions
-  au BufRead,BufNewFile *.{md,mkd,mdown,markdown} set ft=markdown
+  " Remember last location in file
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g`\"" | endif
+
+  " Detect extensions
+  au BufNewFile,BufReadPost *.md set filetype=markdown
 
   " Proper indentation
   au FileType make,c setl noet sts=0 sw=8
