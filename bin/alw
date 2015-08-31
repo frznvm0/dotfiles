@@ -1,0 +1,28 @@
+#!/bin/sh
+#
+# align windows
+set -e
+
+[ $# -lt 2 ] && echo "usage: alw <pos> <wid> [wid... ]" >&2 && exit 1
+
+read mw mh <<< "$(wattr wh $(lsw -r))"
+
+gap=20
+pos=$1
+shift
+
+while [ $# -gt 0 ]; do
+  wid=$1
+  shift
+
+  read x y w h b <<< "$(wattr xywhb $wid 2>/dev/null)"
+  [ -z "$x" ] && echo "alw: $wid: no such window" >&2 && exit 1
+
+  case $pos in
+    tl) wtp $gap $gap $w $h $wid ;;
+    tr) wtp $((mw - w - 2 * b - gap)) $gap $w $h $wid ;;
+    bl) wtp $gap $((mh - h - 2 * b - gap)) $w $h $wid ;;
+    br) wtp $((mw - w - 2 * b - gap)) $((mh - h - 2 * b - gap)) $w $h $wid ;;
+    mid) wtp $(((mw - w) / 2 - b)) $(((mh - h) / 2 - b)) $w $h $wid ;;
+  esac
+done

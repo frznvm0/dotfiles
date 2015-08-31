@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# toggle fullscreen
+set -e
+
+[ -z "$1" ] && echo "usage: fsw <wid>" >&2 && exit 1
+
+read x y w h b <<< "$(wattr xywhb $1 2>/dev/null)"
+[ -z "$x" ] && echo "fsw: $1: no such window" >&2 && exit 1
+
+# monitor dimensions
+read mw mh <<< "$(wattr wh $(lsw -r))"
+
+# anything currently fullscreen
+read fx fy fw fh fb i <<< "$(xprop -root _FSW | cut -sd\" -f2)"
+
+# restore
+if [ "$i" ]; then
+  xprop -root -remove _FSW
+  wtp $fx $fy $fw $fh $i
+  chwb -s $fb $i
+fi
+
+# scale up
+if [ "$i" != $1 ]; then
+  xprop -root -f _FSW 8s -set _FSW "$x $y $w $h $b $1"
+  chwb -s 0 $1
+  wtp 0 0 $mw $mh $1
+  chwso -r $1
+fi
