@@ -6,7 +6,7 @@ super + Return
 super + space
   dmenu_run
 
-Menu
+XF86PowerOff
   slock
 
 XF86Audio{Raise,Lower}Volume
