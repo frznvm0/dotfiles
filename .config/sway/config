@@ -47,7 +47,7 @@ exec swayidle -w \
     bindsym $mod+Return exec $term
 
     # Lock screen
-    bindsym $mod+Alt+l exec swaylockd
+    bindsym $mod+Alt+l exec swaylockd && timew stop
 
     # Audio keys
     #bindsym --locked XF86AudioMute exec amixer -c 1 sset Master toggle
