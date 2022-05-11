@@ -1,0 +1,122 @@
+# IMAP
+set imap_user = "john.doe"
+set imap_pass = "hunter2"
+
+set folder = "imaps://example.com/"
+set spoolfile = "+INBOX"
+set imap_check_subscribed
+
+set postponed = "+INBOX.Drafts"
+set record = "+INBOX.Sent"
+set trash = "+INBOX.Trash"
+
+set mail_check = 60
+set mail_check_stats
+
+set new_mail_command = "notify-send --icon=/usr/share/icons/Adwaita/256x256/legacy/mail-message-new.png 'New Email' '%n new messages, %u unread' &"
+
+# SMTP
+set realname = "John Doe"
+set from = "john.doe@example.com"
+set smtp_url = "smtps://$imap_user:$imap_pass@example.com/"
+
+# Index
+set sort = threads
+set sort_aux = reverse-last-date-received
+set confirmappend = no
+set delete
+set mark_old = no
+
+set collapse_unread = no
+folder-hook . 'push <collapse-all>'
+
+set header_cache= "~/.mutt/hcache"
+
+# Pager
+ignore *
+unignore From Message-ID Date To Cc Bcc Subject
+hdr_order Date From To Cc Subject
+
+set pager_stop
+unset markers
+
+# Compose
+set edit_headers
+set editor = "vim"
+set mime_type_query_command = "xdg-mime query filetype"
+
+set fast_reply
+set include
+set attribution = "On %d, %n <%a> wrote:\n"
+
+# MIME
+alternative_order multipart/mixed multipart/related text/plain
+mime_lookup application/octet-stream
+auto_view text/html # see ~/.mailcap
+
+# Sidebar
+set sidebar_visible
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set sidebar_short_path
+set sidebar_folder_indent
+set sidebar_next_new_wrap
+
+# Bindings
+bind index <space> collapse-thread
+macro index,pager \Cp <sidebar-prev> #-new><sidebar-open>
+macro index,pager \Cn <sidebar-next> #-new><sidebar-open>
+macro index,pager \Co <sidebar-open>
+
+# Colors
+color normal default default
+color status default black
+color indicator black yellow
+color tree blue default
+color error brightred default
+color message brightyellow default
+
+uncolor index "~P"
+color index brightblack default "~P"
+
+uncolor index "~N"
+color index brightcyan default "~N"
+
+# Color today's new messages
+color index brightyellow default "~N ~d <1d"
+
+uncolor index "~T"
+color index brightgreen default "~T"
+
+uncolor index "~D"
+color index brightred default "~D"
+
+color header white default "^date:"
+color header green default "^from:"
+color header yellow default "^to:"
+color header yellow default "^cc:"
+color header brightblue default "^subject:"
+
+color attachment brightblack default
+color search red brightblack
+color signature cyan default
+color tilde blue default
+
+color body brightblue default "(^|<| )mailto:[^ ]+@[^ ]( |>|$)"
+color body brightblue default "(^|<| )(http|https|ftp|file|telnet|news|finger)://[^ ]+( |>|$)"
+
+color body brightmagenta default "(^| )+(|[<>|])[8;:](|[^ ])[)(/|DOPS]( |$)+"
+color body brightmagenta default "(^| )+[)(/|DOPS](|[^ ])[8;:](|[<>|])( |$)+"
+
+color body brightcyan default "(^| )\\*[^*]+\\*( |$)"
+color body brightcyan default "(^| )_[^_]+_( |$)"
+color body brightcyan default "(^| )/[^/]+/( |$)"
+
+color quoted magenta default
+color quoted1 cyan default
+color quoted2 green default
+color quoted3 magenta default
+color quoted4 cyan default
+color quoted5 green default
+color quoted6 magenta default
+color quoted7 cyan default
+

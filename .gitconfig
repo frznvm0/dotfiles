@@ -1,0 +1,6 @@
+[grep]
+lineNumber = true
+[alias]
+co = checkout
+st = status -sb
+l = log --oneline --decorate --graph

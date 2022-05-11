@@ -1,0 +1,11 @@
+text/html; w3m -T text/html -I %{charset} -O utf-8 -dump %s; nametemplate=%s.html; copiousoutput
+
+image/*; imv %s; copiousoutput
+audio/*; mpv %s; copiousoutput
+video/*; mpv %s; copiousoutput
+
+# browser for now
+application/pdf; xdg-open %s; copiousoutput
+
+# winmail.dat
+application/ms-tnef; ytnef %s

@@ -1,0 +1,8 @@
+#!/bin/sh -e
+CONFDIR=~/.config/openvpn
+case "$1" in
+  down|stop|rm|off) doas pkill -f openvpn-$2 ;;
+  list|ls|-l) cd $CONFDIR && ls -1 *.ovpn | sed s/.ovpn$// ;;
+  "") echo "usage: $(basename "$0") [list|down] [<profile>]" >&2 && exit 1 ;;
+  *) doas openvpn --cd $CONFDIR --config $1.ovpn --daemon openvpn-$1 ;;
+esac

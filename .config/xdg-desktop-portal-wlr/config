@@ -1,0 +1,6 @@
+[screencast]
+max_fps=60
+#chooser_cmd=slurp -w 38 -c ff0000aa -f %o -or
+#chooser_type=simple
+chooser_type=none
+output=eDP-1
